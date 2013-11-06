@@ -15,7 +15,7 @@ ARCHITECTURE behavior OF test_registro IS
     PORT(
          ENTRADA : IN  std_logic_vector(13 downto 0);
          SALIDA : OUT  std_logic_vector(13 downto 0);
-         RCLK : IN  std_logic
+         CLK : IN  std_logic
         );
     END COMPONENT;
     
@@ -36,7 +36,7 @@ BEGIN
    uut: registro PORT MAP (
           ENTRADA => ENTRADA,
           SALIDA => SALIDA,
-          RCLK => RCLK
+          CLK => RCLK
         );
 
    -- Clock process definitions

@@ -1,0 +1,5 @@
+set -tmpdir "C:/alumnos/ProCelt1/xst/projnav.tmp"
+set -xsthdpdir "C:/alumnos/ProCelt1/xst"
+elaborate
+-ifn reg_desp40.prj
+-ifmt mixed

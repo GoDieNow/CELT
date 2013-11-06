@@ -32,7 +32,7 @@ end reg_desp40;
 
 architecture Behavioral of reg_desp40 is
 
-	signal QAUX : STD_LOGIC_VECTOR (39 downto 0);
+	signal QAUX : STD_LOGIC_VECTOR (39 downto 0) := "0000000000000000000000000000000000000000";
 
 begin
 

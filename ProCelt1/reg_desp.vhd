@@ -33,7 +33,7 @@ end reg_desp;
 
 architecture Behavioral of reg_desp is
 
-	signal QAUX : STD_LOGIC_VECTOR (13 downto 0);
+	signal QAUX : STD_LOGIC_VECTOR (13 downto 0) := "00000000000000";
 
 begin
 

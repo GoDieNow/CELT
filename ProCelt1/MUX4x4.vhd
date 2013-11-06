@@ -38,14 +38,14 @@ architecture Behavioral of MUX4x4 is
 
 begin
 
-	process (S)
+	process (S, E0, E1, E2, E3)
 		begin
 			case S is 
 				WHEN "00" => Y <= E0;
 				WHEN "01" => Y <= E1;
 				WHEN "10" => Y <= E2;
 				WHEN "11" => Y <= E3;
-				WHEN OTHERS => Y <= "XXXX";
+				WHEN OTHERS => Y <= "0000";
 		end case;
 	end process;
 

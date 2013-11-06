@@ -1,5 +1,6 @@
 ISim log file
-Running: C:\Documents and Settings\alumno\ProCelt1\test_automata_isim_beh.exe -gui -tclbatch isim.cmd -wdb C:/Documents and Settings/alumno/ProCelt1/test_automata_isim_beh.wdb 
+Running: C:\alumnos\ProCelt1\test_sumador40_isim_beh.exe -gui -tclbatch isim.cmd -wdb C:/alumnos/ProCelt1/test_sumador40_isim_beh.wdb 
+INFO: There is another simulation running in the same directory. Using database file name isim1.wdb.
 ISim M.81d (signature 0xcb73ee62)
 WARNING: A WEBPACK license was found.
 WARNING: Please use Xilinx License Configuration Manager to check out a full ISim license.
@@ -10,5 +11,5 @@ Time resolution is 1 ps
 # wave add /
 # run 1000 ns
 Simulator is doing circuit initialization process.
+at 0 ps, Instance /test_sumador40/uut/ : Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
 Finished circuit initialization process.
-# run 3.00us

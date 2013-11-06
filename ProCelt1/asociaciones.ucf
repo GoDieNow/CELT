@@ -1,14 +1,15 @@
 # Reloj principal del sistema 
 NET "CLK" LOC = "M6"; # Señal de reloj del sistema 
  
-# Conexiones de los DISPLAYS 
-NET "SEG7<0>" LOC = "L14"; # señal = CA 
-NET "SEG7<1>" LOC = "H12"; # Señal = CB 
-NET "SEG7<2>" LOC = "N14"; # Señal = CC 
+# Conexiones de los DISPLAYS
+# Puestas al reves de como pone en la serigrafia
+NET "SEG7<0>" LOC = "M12"; # señal = CA 
+NET "SEG7<1>" LOC = "L13"; # Señal = CB 
+NET "SEG7<2>" LOC = "P12"; # Señal = CC 
 NET "SEG7<3>" LOC = "N11"; # Señal = CD 
-NET "SEG7<4>" LOC = "P12"; # Señal = CE 
-NET "SEG7<5>" LOC = "L13"; # Señal = CF 
-NET "SEG7<6>" LOC = "M12"; # Señal = CG 
+NET "SEG7<4>" LOC = "N14"; # Señal = CE 
+NET "SEG7<5>" LOC = "H12"; # Señal = CF 
+NET "SEG7<6>" LOC = "L14"; # Señal = CG 
  
 # Señales de activación de los displays 
 NET "AN<0>" LOC = "K14"; # Activación del display 0 = AN0 
@@ -17,4 +18,10 @@ NET "AN<2>" LOC = "J12"; # Activación del display 2 = AN2
 NET "AN<3>" LOC = "F12"; # Activación del display 3 = AN3 
  
 #Entrada externa donde se conecta la señal entrante 
-NET "SIN" LOC = "B7"; #Entrada terminal 1 
+NET "ENTRADA" LOC = "B2"; #Entrada terminal 1 
+NET "LED1" LOC = "M11";     # LED0
+NET "LED2" LOC = "P7";     # LED0
+NET "LED3" LOC = "P6";     # LED0
+NET "LED4" LOC = "N5";     # LED0
+NET "LED5" LOC = "N4";     # LED0
+NET "LED0" LOC = "M5";     # LED0

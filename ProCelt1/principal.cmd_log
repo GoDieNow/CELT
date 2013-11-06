@@ -1,0 +1,89 @@
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc asociaciones.ucf -p xc3s100e-cp132-5 principal.ngc principal.ngd  
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc asociaciones.ucf -p xc3s100e-cp132-5 principal.ngc principal.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o principal_map.ncd principal.ngd principal.pcf 
+par -w -intstyle ise -ol high -t 1 principal_map.ncd principal.ncd principal.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml principal.twx principal.ncd -o principal.twr principal.pcf -ucf asociaciones.ucf 
+bitgen -intstyle ise -f principal.ut principal.ncd 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc asociaciones.ucf -p xc3s100e-cp132-5 principal.ngc principal.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o principal_map.ncd principal.ngd principal.pcf 
+par -w -intstyle ise -ol high -t 1 principal_map.ncd principal.ncd principal.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml principal.twx principal.ncd -o principal.twr principal.pcf -ucf asociaciones.ucf 
+bitgen -intstyle ise -f principal.ut principal.ncd 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc asociaciones.ucf -p xc3s100e-cp132-5 principal.ngc principal.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o principal_map.ncd principal.ngd principal.pcf 
+par -w -intstyle ise -ol high -t 1 principal_map.ncd principal.ncd principal.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml principal.twx principal.ncd -o principal.twr principal.pcf -ucf asociaciones.ucf 
+bitgen -intstyle ise -f principal.ut principal.ncd 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc asociaciones.ucf -p xc3s100e-cp132-5 principal.ngc principal.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o principal_map.ncd principal.ngd principal.pcf 
+par -w -intstyle ise -ol high -t 1 principal_map.ncd principal.ncd principal.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml principal.twx principal.ncd -o principal.twr principal.pcf -ucf asociaciones.ucf 
+bitgen -intstyle ise -f principal.ut principal.ncd 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc asociaciones.ucf -p xc3s100e-cp132-5 principal.ngc principal.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o principal_map.ncd principal.ngd principal.pcf 
+par -w -intstyle ise -ol high -t 1 principal_map.ncd principal.ncd principal.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml principal.twx principal.ncd -o principal.twr principal.pcf -ucf asociaciones.ucf 
+bitgen -intstyle ise -f principal.ut principal.ncd 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc asociaciones.ucf -p xc3s100e-cp132-5 principal.ngc principal.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o principal_map.ncd principal.ngd principal.pcf 
+par -w -intstyle ise -ol high -t 1 principal_map.ncd principal.ncd principal.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml principal.twx principal.ncd -o principal.twr principal.pcf -ucf asociaciones.ucf 
+bitgen -intstyle ise -f principal.ut principal.ncd 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc asociaciones.ucf -p xc3s100e-cp132-5 principal.ngc principal.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o principal_map.ncd principal.ngd principal.pcf 
+par -w -intstyle ise -ol high -t 1 principal_map.ncd principal.ncd principal.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml principal.twx principal.ncd -o principal.twr principal.pcf -ucf asociaciones.ucf 
+bitgen -intstyle ise -f principal.ut principal.ncd 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc asociaciones.ucf -p xc3s100e-cp132-5 principal.ngc principal.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o principal_map.ncd principal.ngd principal.pcf 
+par -w -intstyle ise -ol high -t 1 principal_map.ncd principal.ncd principal.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml principal.twx principal.ncd -o principal.twr principal.pcf -ucf asociaciones.ucf 
+bitgen -intstyle ise -f principal.ut principal.ncd 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc asociaciones.ucf -p xc3s100e-cp132-5 principal.ngc principal.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o principal_map.ncd principal.ngd principal.pcf 
+par -w -intstyle ise -ol high -t 1 principal_map.ncd principal.ncd principal.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml principal.twx principal.ncd -o principal.twr principal.pcf -ucf asociaciones.ucf 
+bitgen -intstyle ise -f principal.ut principal.ncd 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc asociaciones.ucf -p xc3s100e-cp132-5 principal.ngc principal.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o principal_map.ncd principal.ngd principal.pcf 
+par -w -intstyle ise -ol high -t 1 principal_map.ncd principal.ncd principal.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml principal.twx principal.ncd -o principal.twr principal.pcf -ucf asociaciones.ucf 
+bitgen -intstyle ise -f principal.ut principal.ncd 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc asociaciones.ucf -p xc3s100e-cp132-5 principal.ngc principal.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o principal_map.ncd principal.ngd principal.pcf 
+par -w -intstyle ise -ol high -t 1 principal_map.ncd principal.ncd principal.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml principal.twx principal.ncd -o principal.twr principal.pcf -ucf asociaciones.ucf 
+bitgen -intstyle ise -f principal.ut principal.ncd 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc asociaciones.ucf -p xc3s100e-cp132-5 principal.ngc principal.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o principal_map.ncd principal.ngd principal.pcf 
+par -w -intstyle ise -ol high -t 1 principal_map.ncd principal.ncd principal.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml principal.twx principal.ncd -o principal.twr principal.pcf -ucf asociaciones.ucf 
+bitgen -intstyle ise -f principal.ut principal.ncd 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc asociaciones.ucf -p xc3s100e-cp132-5 principal.ngc principal.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o principal_map.ncd principal.ngd principal.pcf 
+par -w -intstyle ise -ol high -t 1 principal_map.ncd principal.ncd principal.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml principal.twx principal.ncd -o principal.twr principal.pcf -ucf asociaciones.ucf 
+bitgen -intstyle ise -f principal.ut principal.ncd 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+xst -intstyle ise -ifn "C:/alumnos/ProCelt1/principal.xst" -ofn "C:/alumnos/ProCelt1/principal.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc asociaciones.ucf -p xc3s100e-cp132-5 principal.ngc principal.ngd  
+map -intstyle ise -p xc3s100e-cp132-5 -cm area -ir off -pr off -c 100 -o principal_map.ncd principal.ngd principal.pcf 
+par -w -intstyle ise -ol high -t 1 principal_map.ncd principal.ncd principal.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml principal.twx principal.ncd -o principal.twr principal.pcf -ucf asociaciones.ucf 
+bitgen -intstyle ise -f principal.ut principal.ncd 
