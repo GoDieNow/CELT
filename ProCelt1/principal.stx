@@ -1,0 +1,59 @@
+Release 12.4 - xst M.81d (nt)
+Copyright (c) 1995-2010 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to C:/Documents and Settings/alumno/ProCelt1/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.13 secs
+ 
+--> Parameter xsthdpdir set to C:/Documents and Settings/alumno/ProCelt1/xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.13 secs
+ 
+--> WARNING:Xst:3164 - Option "-debug" found multiple times in the command line. Only the first occurence is considered.
+
+=========================================================================
+*                          HDL Compilation                              *
+=========================================================================
+Compiling vhdl file "C:/Documents and Settings/alumno/ProCelt1/MUX4x4.vhd" in Library work.
+Architecture behavioral of Entity mux4x4 is up to date.
+Compiling vhdl file "C:/Documents and Settings/alumno/ProCelt1/decod7s.vhd" in Library work.
+Architecture behavioral of Entity decod7s is up to date.
+Compiling vhdl file "C:/Documents and Settings/alumno/ProCelt1/refresco.vhd" in Library work.
+Architecture behavioral of Entity refresco is up to date.
+Compiling vhdl file "C:/Documents and Settings/alumno/ProCelt1/gen_reloj.vhd" in Library work.
+Architecture behavioral of Entity gen_reloj is up to date.
+Compiling vhdl file "C:/Documents and Settings/alumno/ProCelt1/reg_desp40.vhd" in Library work.
+Architecture behavioral of Entity reg_desp40 is up to date.
+Compiling vhdl file "C:/Documents and Settings/alumno/ProCelt1/sumador40.vhd" in Library work.
+Architecture behavioral of Entity sumador40 is up to date.
+Compiling vhdl file "C:/Documents and Settings/alumno/ProCelt1/comparador.vhd" in Library work.
+Architecture behavioral of Entity comparador is up to date.
+Compiling vhdl file "C:/Documents and Settings/alumno/ProCelt1/AND_2.vhd" in Library work.
+Architecture behavioral of Entity and_2 is up to date.
+Compiling vhdl file "C:/Documents and Settings/alumno/ProCelt1/automata.vhd" in Library work.
+Architecture behavioral of Entity automata is up to date.
+Compiling vhdl file "C:/Documents and Settings/alumno/ProCelt1/reg_desp.vhd" in Library work.
+Architecture behavioral of Entity reg_desp is up to date.
+Compiling vhdl file "C:/Documents and Settings/alumno/ProCelt1/registro.vhd" in Library work.
+Architecture behavioral of Entity registro is up to date.
+Compiling vhdl file "C:/Documents and Settings/alumno/ProCelt1/visualizacion.vhd" in Library work.
+Architecture behavioral of Entity visualizacion is up to date.
+Compiling vhdl file "C:/Documents and Settings/alumno/ProCelt1/principal.vhd" in Library work.
+Entity <principal> compiled.
+Entity <principal> (Architecture <Behavioral>) compiled.
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.52 secs
+ 
+--> 
+
+Total memory usage is 120992 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    1 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

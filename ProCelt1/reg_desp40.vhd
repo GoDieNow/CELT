@@ -32,8 +32,18 @@ end reg_desp40;
 
 architecture Behavioral of reg_desp40 is
 
+	signal QAUX : STD_LOGIC_VECTOR (39 downto 0);
+
 begin
 
+	process(CLK)
+		begin
+			if CLK'event and CLK = '1' then
+				QAUX <= SIN & QAUX (39 downto 1);
+			end if;
+	end process;	
+
+	Q <= QAUX;
 
 end Behavioral;
 

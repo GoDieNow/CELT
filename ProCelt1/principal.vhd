@@ -116,12 +116,14 @@ architecture Behavioral of principal is
 	signal SC_AND1			   : std_logic;
 	signal SC_AND2			   : std_logic;
 	signal SC_AUT   		   : std_logic;
-	signal SAND_AUT    		: std_logic_vector(7 downto 0);
+	signal SAND_AUT    		: std_logic;
 	signal SAUT_REGV 			: std_logic;
 	signal SAUT_RDESP_CAPT	: std_logic;
 	signal SAUT_RDESP_DAT 	: std_logic;
 	signal SRDESP_REGV   	: std_logic_vector(13 downto 0);
 	signal SREGV_VISU 		: std_logic_vector(13 downto 0);
+	
+	signal tmp : std_logic_vector(3 downto 0);
 	
 	-----------------------------
 	-- Constantes del Comparador
@@ -129,11 +131,15 @@ architecture Behavioral of principal is
 	constant U1 : STD_LOGIC_VECTOR (5 downto 0) := "100010";  -- Cte U1 = 34 
 	constant U2 : STD_LOGIC_VECTOR (5 downto 0) := "100110";  -- Cte U2 = 38
 	
+	-- variable tmp : STD_LOGIC_VECTOR (3 downto 0);
+	
 begin
+
+	tmp <= "00" & SREGV_VISU(13 downto 12);
 	--------------------------
 	-- Mapeado de Componentes
 	--------------------------
-	GEN_RELOJ: gen_reloj
+	GENE_RELOJ: gen_reloj
     port map (
       CLK   => CLK,
       CLK_M => SCLK_M,
@@ -169,7 +175,7 @@ begin
       B		=> SC_AND2,
       S		=> SAND_AUT);
 
-	AUTOMATA: automata
+	AUTOM: automata
     port map (
       CLK  		=> SCLK_M,
       C0 		=> SAND_AUT,
@@ -185,21 +191,28 @@ begin
       EN 	=> SAUT_RDESP_CAPT,
       Q  	=> SRDESP_REGV);
 
-	REGISTRO: registro
+	REGIST: registro
     port map (
       CLK     => SAUT_REGV,
       ENTRADA => SRDESP_REGV,
       SALIDA  => SREGV_VISU);
 
-	VISUALIZACION: visualizacion
+	VISUALIZA: visualizacion
     port map (
       CLK  	=> SCLK_V,
-      E0 	=> SREGV_VISU(0 TO 3),
-      E1 	=> SREGV_VISU(4 TO 7),
-      E2  	=> SREGV_VISU(8 DOWNTO 11),
-      E3   	=> "00" + SREGV_VISU(12 TO 13),
+      E0 	=> SREGV_VISU(3 downto 0),
+      E1 	=> SREGV_VISU(7 downto 4),
+      E2  	=> SREGV_VISU(11 downto 8),
+      E3  	=> tmp,
       SEG7  => SEG7,
 		AN    => AN);
+
+
+
+
+
+
+
 
 	------------------------------
 	-- Tooo la Xhixha xD

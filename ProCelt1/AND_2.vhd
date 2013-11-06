@@ -32,6 +32,10 @@ architecture Behavioral of AND_2 is
 
 begin
 
+	process (A,B)
+		begin
+			S <= A AND B;
+	end process;
 
 end Behavioral;
 

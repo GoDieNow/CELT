@@ -1,0 +1,5 @@
+set -tmpdir "C:/Documents and Settings/alumno/ProCelt1/xst/projnav.tmp"
+set -xsthdpdir "C:/Documents and Settings/alumno/ProCelt1/xst"
+elaborate
+-ifn principal.prj
+-ifmt mixed

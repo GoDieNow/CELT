@@ -7,21 +7,28 @@
    <ItemView engineview="SynthesisOnly" guiview="Source" compilemode="AutoCompile" >
       <ClosedNodes>
          <ClosedNodesVersion>2</ClosedNodesVersion>
+         <ClosedNode>/principal - Behavioral C:|Documents and Settings|alumno|ProCelt1|principal.vhd/VISUALIZA - visualizacion - Behavioral</ClosedNode>
+         <ClosedNode>/test_automata - behavior C:|Documents and Settings|alumno|test_automata.vhd</ClosedNode>
          <ClosedNode>/test_automata - behavior |home|neim|VHDL|CELT|test_automata.vhd</ClosedNode>
+         <ClosedNode>/test_comparador - behavior C:|Documents and Settings|alumno|test_comparador.vhd</ClosedNode>
          <ClosedNode>/test_comparador - behavior |home|neim|VHDL|CELT|test_comparador.vhd</ClosedNode>
+         <ClosedNode>/test_reg_desp - behavior C:|Documents and Settings|alumno|test_reg_desp.vhd</ClosedNode>
          <ClosedNode>/test_reg_desp - behavior |home|neim|VHDL|CELT|test_reg_desp.vhd</ClosedNode>
+         <ClosedNode>/test_reg_desp40 - behavior C:|Documents and Settings|alumno|test_reg_desp40.vhd</ClosedNode>
          <ClosedNode>/test_reg_desp40 - behavior |home|neim|VHDL|CELT|test_reg_desp40.vhd</ClosedNode>
+         <ClosedNode>/test_registro - behavior C:|Documents and Settings|alumno|test_registro.vhd</ClosedNode>
          <ClosedNode>/test_registro - behavior |home|neim|VHDL|CELT|test_registro.vhd</ClosedNode>
+         <ClosedNode>/test_sumador40 - behavior C:|Documents and Settings|alumno|test_sumador40.vhd</ClosedNode>
          <ClosedNode>/test_sumador40 - behavior |home|neim|VHDL|CELT|test_sumador40.vhd</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>test_automata - behavior (/home/neim/VHDL/CELT/test_automata.vhd)</SelectedItem>
+         <SelectedItem>AUTOM - automata - Behavioral (C:/Documents and Settings/alumno/ProCelt1/automata.vhd)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001cd000000020000000000000000000000000000000064ffffffff000000810000000000000002000001cd0000000100000000000000000000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>test_automata - behavior (/home/neim/VHDL/CELT/test_automata.vhd)</CurrentItem>
+      <CurrentItem>AUTOM - automata - Behavioral (C:/Documents and Settings/alumno/ProCelt1/automata.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -29,13 +36,13 @@
          <ClosedNode>Design Utilities</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem/>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000137000000010000000100000000000000000000000064ffffffff000000810000000000000001000001370000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000c9000000010000000100000000000000000000000064ffffffff000000810000000000000001000000c90000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem/>
+      <CurrentItem></CurrentItem>
    </ItemView>
    <ItemView guiview="File" >
       <ClosedNodes>
@@ -44,9 +51,9 @@
       <SelectedItems/>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000000000000000100000000000000000000000000000000000004c3000000040101000100000000000000000000000064ffffffff000000810000000000000004000000680000000100000000000000240000000100000000000000660000000100000000000003d10000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000000000000010000000000000000000000000000000000000156000000040101000100000000000000000000000064ffffffff000000810000000000000004000000680000000100000000000000240000000100000000000000660000000100000000000000640000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>principal.vhd</CurrentItem>
+      <CurrentItem></CurrentItem>
    </ItemView>
    <ItemView guiview="Library" >
       <ClosedNodes>
@@ -56,7 +63,7 @@
       <SelectedItems/>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000000000000000100000000000000000000000000000000000004b4000000010001000100000000000000000000000064ffffffff000000810000000000000001000004b40000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000000000000001000000000000000000000000000000000000013d000000010001000100000000000000000000000064ffffffff0000008100000000000000010000013d0000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem>work</CurrentItem>
    </ItemView>
@@ -66,7 +73,6 @@
          <ClosedNode>Configure Target Device</ClosedNode>
          <ClosedNode>Design Utilities</ClosedNode>
          <ClosedNode>Implement Design</ClosedNode>
-         <ClosedNode>Synthesize - XST</ClosedNode>
          <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
@@ -74,11 +80,11 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000111000000010000000100000000000000000000000064ffffffff000000810000000000000001000001110000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000125000000010000000100000000000000000000000064ffffffff000000810000000000000001000001250000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem></CurrentItem>
    </ItemView>
-   <SourceProcessView>000000ff000000000000000200000199000000ee01000000050100000002</SourceProcessView>
+   <SourceProcessView>000000ff00000000000000020000016c0000010301000000050100000002</SourceProcessView>
    <CurrentView>Behavioral Simulation</CurrentView>
    <ItemView engineview="SynthesisOnly" sourcetype="DESUT_BMM" guiview="Process" >
       <ClosedNodes>
@@ -91,25 +97,50 @@
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem/>
    </ItemView>
-   <ItemView engineview="BehavioralSim" guiview="Source" compilemode="AutoCompile" >
+   <ItemView engineview="SynthesisOnly" sourcetype="DESUT_SCHEMATIC" guiview="Process" >
       <ClosedNodes>
-         <ClosedNodesVersion>2</ClosedNodesVersion>
-         <ClosedNode>/principal - Behavioral |home|neim|VHDL|CELT|ProCelt1|principal.vhd</ClosedNode>
-         <ClosedNode>/test_automata - behavior |home|neim|VHDL|CELT|test_automata.vhd</ClosedNode>
-         <ClosedNode>/test_comparador - behavior |home|neim|VHDL|CELT|test_comparador.vhd</ClosedNode>
-         <ClosedNode>/test_reg_desp - behavior |home|neim|VHDL|CELT|test_reg_desp.vhd</ClosedNode>
-         <ClosedNode>/test_reg_desp40 - behavior |home|neim|VHDL|CELT|test_reg_desp40.vhd</ClosedNode>
-         <ClosedNode>/test_registro - behavior |home|neim|VHDL|CELT|test_registro.vhd</ClosedNode>
-         <ClosedNode>/test_sumador40 - behavior |home|neim|VHDL|CELT|test_sumador40.vhd</ClosedNode>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+      </ClosedNodes>
+      <SelectedItems/>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" ></ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem></CurrentItem>
+   </ItemView>
+   <ItemView engineview="SynthesisOnly" sourcetype="DESUT_UCF" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>test_sumador40 - behavior (/home/neim/VHDL/CELT/test_sumador40.vhd)</SelectedItem>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000002020000000100000001000000640000018c000000020000000000000000000000000000000064ffffffff0000008100000000000000020000018c0000000100000000000000000000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000c9000000010000000100000000000000000000000064ffffffff000000810000000000000001000000c90000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>test_sumador40 - behavior (/home/neim/VHDL/CELT/test_sumador40.vhd)</CurrentItem>
+      <CurrentItem></CurrentItem>
+   </ItemView>
+   <ItemView engineview="BehavioralSim" guiview="Source" compilemode="AutoCompile" >
+      <ClosedNodes>
+         <ClosedNodesVersion>2</ClosedNodesVersion>
+         <ClosedNode>/principal - Behavioral C:|Documents and Settings|alumno|ProCelt1|principal.vhd/VISUALIZA - visualizacion - Behavioral</ClosedNode>
+         <ClosedNode>/principal - Behavioral C:|Documents and Settings|alumno|ProCelt1|principal.vhd/VISUALIZACION - visualizacion - Behavioral</ClosedNode>
+         <ClosedNode>/test_comparador - behavior C:|Documents and Settings|alumno|test_comparador.vhd</ClosedNode>
+         <ClosedNode>/test_reg_desp - behavior C:|Documents and Settings|alumno|test_reg_desp.vhd</ClosedNode>
+         <ClosedNode>/test_reg_desp40 - behavior C:|Documents and Settings|alumno|test_reg_desp40.vhd</ClosedNode>
+         <ClosedNode>/test_registro - behavior C:|Documents and Settings|alumno|test_registro.vhd</ClosedNode>
+         <ClosedNode>/test_sumador40 - behavior C:|Documents and Settings|alumno|test_sumador40.vhd</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem>test_automata - behavior (C:/Documents and Settings/alumno/test_automata.vhd)</SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff0000000000000001000000010000000000000000000000000000000002020000000100000001000000640000013d000000020000000000000000000000000000000064ffffffff0000008100000000000000020000013d0000000100000000000000000000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>test_automata - behavior (C:/Documents and Settings/alumno/test_automata.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -121,22 +152,21 @@
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000111000000010000000100000000000000000000000064ffffffff000000810000000000000001000001110000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000125000000010000000100000000000000000000000064ffffffff000000810000000000000001000001250000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
       <CurrentItem></CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="DESUT_VHDL_ARCHITECTURE" guiview="Process" >
       <ClosedNodes>
          <ClosedNodesVersion>1</ClosedNodesVersion>
-         <ClosedNode>ISim Simulator</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem></SelectedItem>
+         <SelectedItem>Simulate Behavioral Model</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000111000000010000000100000000000000000000000064ffffffff000000810000000000000001000001110000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff00000000000000010000000100000000000000000000000000000000000000000000000125000000010000000100000000000000000000000064ffffffff000000810000000000000001000001250000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem></CurrentItem>
+      <CurrentItem>Simulate Behavioral Model</CurrentItem>
    </ItemView>
 </Project>

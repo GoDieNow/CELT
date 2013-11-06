@@ -33,7 +33,12 @@ end registro;
 architecture Behavioral of registro is
 
 begin
-
+	process (CLK)
+		begin
+			if CLK'event and CLK='1' then
+				SALIDA <= ENTRADA;
+			end if;
+	end process;
 
 end Behavioral;
 

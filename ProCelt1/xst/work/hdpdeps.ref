@@ -1,0 +1,100 @@
+V3 51
+FL "C:/Documents and Settings/alumno/ProCelt1/AND_2.vhd" 2013/10/30.15:52:02 M.81d
+EN work/AND_2 1383152161 FL "C:/Documents and Settings/alumno/ProCelt1/AND_2.vhd" \
+      PB ieee/std_logic_1164 1290154108
+AR work/AND_2/Behavioral 1383152162 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/AND_2.vhd" EN work/AND_2 1383152161
+FL "C:/Documents and Settings/alumno/ProCelt1/automata.vhd" 2013/10/30.17:23:16 M.81d
+EN work/automata 1383152163 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/automata.vhd" \
+      PB ieee/std_logic_1164 1290154108 PB ieee/std_logic_arith 1290154109 \
+      PB ieee/STD_LOGIC_UNSIGNED 1290154110
+AR work/automata/Behavioral 1383152164 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/automata.vhd" \
+      EN work/automata 1383152163
+FL "C:/Documents and Settings/alumno/ProCelt1/comparador.vhd" 2013/10/30.15:33:24 M.81d
+EN work/comparador 1383152159 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/comparador.vhd" \
+      PB ieee/std_logic_1164 1290154108
+AR work/comparador/Behavioral 1383152160 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/comparador.vhd" \
+      EN work/comparador 1383152159
+FL "C:/Documents and Settings/alumno/ProCelt1/decod7s.vhd" 2013/10/30.16:15:38 M.81d
+EN work/decod7s 1383152149 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/decod7s.vhd" \
+      PB ieee/std_logic_1164 1290154108 PB ieee/std_logic_arith 1290154109 \
+      PB ieee/STD_LOGIC_UNSIGNED 1290154110
+AR work/decod7s/Behavioral 1383152150 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/decod7s.vhd" EN work/decod7s 1383152149
+FL "C:/Documents and Settings/alumno/ProCelt1/gen_reloj.vhd" 2013/10/30.15:15:26 M.81d
+EN work/gen_reloj 1383152153 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/gen_reloj.vhd" \
+      PB ieee/std_logic_1164 1290154108 PB ieee/std_logic_arith 1290154109 \
+      PB ieee/STD_LOGIC_UNSIGNED 1290154110
+AR work/gen_reloj/Behavioral 1383152154 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/gen_reloj.vhd" \
+      EN work/gen_reloj 1383152153
+FL "C:/Documents and Settings/alumno/ProCelt1/MUX4x4.vhd" 2013/10/30.16:01:25 M.81d
+EN work/MUX4x4 1383152147 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/MUX4x4.vhd" \
+      PB ieee/std_logic_1164 1290154108 PB ieee/std_logic_arith 1290154109 \
+      PB ieee/STD_LOGIC_UNSIGNED 1290154110
+AR work/MUX4x4/Behavioral 1383152148 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/MUX4x4.vhd" EN work/MUX4x4 1383152147
+FL "C:/Documents and Settings/alumno/ProCelt1/principal.vhd" 2013/10/30.17:55:44 M.81d
+EN work/principal 1383152171 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/principal.vhd" \
+      PB ieee/std_logic_1164 1290154108 PB ieee/std_logic_arith 1290154109 \
+      PB ieee/STD_LOGIC_UNSIGNED 1290154110
+AR work/principal/Behavioral 1383152172 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/principal.vhd" \
+      EN work/principal 1383152171 CP gen_reloj CP reg_desp40 CP sumador40 \
+      CP comparador CP AND_2 CP automata CP reg_desp CP registro CP visualizacion
+FL "C:/Documents and Settings/alumno/ProCelt1/refresco.vhd" 2013/10/30.17:25:30 M.81d
+EN work/refresco 1383152151 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/refresco.vhd" \
+      PB ieee/std_logic_1164 1290154108 PB ieee/std_logic_arith 1290154109 \
+      PB ieee/STD_LOGIC_UNSIGNED 1290154110
+AR work/refresco/Behavioral 1383152152 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/refresco.vhd" \
+      EN work/refresco 1383152151
+FL "C:/Documents and Settings/alumno/ProCelt1/registro.vhd" 2013/10/30.15:45:53 M.81d
+EN work/registro 1383152167 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/registro.vhd" \
+      PB ieee/std_logic_1164 1290154108 PB ieee/std_logic_arith 1290154109 \
+      PB ieee/STD_LOGIC_UNSIGNED 1290154110
+AR work/registro/Behavioral 1383152168 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/registro.vhd" \
+      EN work/registro 1383152167
+FL "C:/Documents and Settings/alumno/ProCelt1/reg_desp.vhd" 2013/10/30.15:52:48 M.81d
+EN work/reg_desp 1383152165 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/reg_desp.vhd" \
+      PB ieee/std_logic_1164 1290154108 PB ieee/std_logic_arith 1290154109 \
+      PB ieee/STD_LOGIC_UNSIGNED 1290154110
+AR work/reg_desp/Behavioral 1383152166 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/reg_desp.vhd" \
+      EN work/reg_desp 1383152165
+FL "C:/Documents and Settings/alumno/ProCelt1/reg_desp40.vhd" 2013/10/30.15:46:33 M.81d
+EN work/reg_desp40 1383152155 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/reg_desp40.vhd" \
+      PB ieee/std_logic_1164 1290154108 PB ieee/std_logic_arith 1290154109 \
+      PB ieee/STD_LOGIC_UNSIGNED 1290154110
+AR work/reg_desp40/Behavioral 1383152156 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/reg_desp40.vhd" \
+      EN work/reg_desp40 1383152155
+FL "C:/Documents and Settings/alumno/ProCelt1/sumador40.vhd" 2013/10/28.17:48:24 M.81d
+EN work/sumador40 1383152157 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/sumador40.vhd" \
+      PB ieee/std_logic_1164 1290154108 PB ieee/std_logic_arith 1290154109 \
+      PB ieee/STD_LOGIC_UNSIGNED 1290154110
+AR work/sumador40/Behavioral 1383152158 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/sumador40.vhd" \
+      EN work/sumador40 1383152157
+FL "C:/Documents and Settings/alumno/ProCelt1/visualizacion.vhd" 2013/10/30.17:26:18 M.81d
+EN work/visualizacion 1383152169 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/visualizacion.vhd" \
+      PB ieee/std_logic_1164 1290154108 PB ieee/std_logic_arith 1290154109 \
+      PB ieee/STD_LOGIC_UNSIGNED 1290154110
+AR work/visualizacion/Behavioral 1383152170 \
+      FL "C:/Documents and Settings/alumno/ProCelt1/visualizacion.vhd" \
+      EN work/visualizacion 1383152169 CP MUX4x4 CP decod7s CP refresco

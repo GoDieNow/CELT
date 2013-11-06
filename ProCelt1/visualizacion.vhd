@@ -37,7 +37,7 @@ end visualizacion;
 architecture Behavioral of visualizacion is
 
 	-----------------------------
-	-- Declaracin de Componentes
+	-- Declaracion de Componentes
 	-----------------------------
 	component MUX4x4
 		port ( 
@@ -87,7 +87,7 @@ begin
 						D => SMUX_DECO,
 						S => SEG7);
 	
-	REFRESCO: refresco
+	REFRES: refresco
 		port map (
 						CLK => CLK,
 						S   => SREF_MUX,						

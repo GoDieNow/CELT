@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2013-10-29T21:22:52</DateModified>
+  <DateModified>2013-10-30T15:09:37</DateModified>
   <ModuleName>principal</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>/home/neim/VHDL/CELT/ProCelt1/iseconfig/principal.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>/home/neim/VHDL/CELT/ProCelt1/</ImplementationReportsDirectory>
+  <SavedFilePath>C:/Documents and Settings/alumno/ProCelt1/iseconfig/principal.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>C:/Documents and Settings/alumno/ProCelt1\</ImplementationReportsDirectory>
   <DateInitialized>2013-10-16T16:39:26</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
