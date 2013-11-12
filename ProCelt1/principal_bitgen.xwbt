@@ -1,8 +1,0 @@
-INTSTYLE=ise
-INFILE=C:\alumnos\ProCelt1\principal.ncd
-OUTFILE=C:\alumnos\ProCelt1\principal.bit
-FAMILY=Spartan3E
-PART=xc3s100e-5cp132
-WORKINGDIR=C:\alumnos\ProCelt1
-LICENSE=WebPack
-USER_INFO=0_0_173
