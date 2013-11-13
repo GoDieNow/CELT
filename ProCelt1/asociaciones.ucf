@@ -24,4 +24,7 @@ NET "LED2" LOC = "P7";     # LED0
 NET "LED3" LOC = "P6";     # LED0
 NET "LED4" LOC = "N5";     # LED0
 NET "LED5" LOC = "N4";     # LED0
-NET "LED0" LOC = "M5";     # LED0
+NET "LED0" LOC = "M5";     # LED0
+
+NET "R1" LOC = "B9";
+NET "R2" LOC = "C12";

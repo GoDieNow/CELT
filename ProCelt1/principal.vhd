@@ -33,6 +33,8 @@ entity principal is
 			  LED3    : out   STD_LOGIC;
 			  LED4    : out   STD_LOGIC;
 			  LED5    : out   STD_LOGIC;
+			  R1		: out STD_LOGIC;
+			  R2		: out STD_LOGIC;
 			  SEG7	 : out STD_LOGIC_VECTOR(6 DOWNTO 0)); -- Salida hacia displays
 end principal;
 
@@ -140,8 +142,11 @@ architecture Behavioral of principal is
 	constant U1 : STD_LOGIC_VECTOR (5 downto 0) := "100010";  -- Cte U1 = 34 
 	constant U2 : STD_LOGIC_VECTOR (5 downto 0) := "100110";  -- Cte U2 = 38
 	
-	-- variable tmp : STD_LOGIC_VECTOR (3 downto 0);
+	--ALIAS
 	
+	alias AE0 : std_logic_vector(3 downto 0) is SREGV_VISU(3 downto 0);
+	alias AE1 : std_logic_vector(3 downto 0) is SREGV_VISU(7 downto 4);
+	alias AE2 : std_logic_vector(3 downto 0) is SREGV_VISU(11 downto 8);
 begin
 
 	tmp <= "00" & SREGV_VISU(13 downto 12);
@@ -210,9 +215,9 @@ begin
 	VISUALIZA: visualizacion
     port map (
       CLK  	=> SCLK_V,
-      E0 	=> SREGV_VISU(3 downto 0),
-      E1 	=> SREGV_VISU(7 downto 4),
-      E2  	=> SREGV_VISU(11 downto 8),
+      E0 	=> AE0,
+      E1 	=> AE1,
+      E2  	=> AE2,
       E3  	=> tmp,
       SEG7  => SEG7,
 		AN    => AN);
@@ -225,7 +230,8 @@ begin
 	LED4 <= LEDSS(4);
 	LED5 <= LEDSS(5);
 
-
+	R1 <= SCLK_M;
+	R2 <= SCLK_V;
 
 
 	------------------------------

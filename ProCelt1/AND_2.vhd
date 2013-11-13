@@ -30,12 +30,20 @@ end AND_2;
 
 architecture Behavioral of AND_2 is
 
+	signal tmp : STD_LOGIC;
+
 begin
 
-	process (A,B)
+	process (A,B) 
 		begin
-			S <= A AND B;
+			if A = '1' AND B = '1' THEN 
+				tmp <= '1'; 
+			else 
+				tmp <= '0'; 
+			end if; 
 	end process;
-
+	
+	S <= tmp; 
+	
 end Behavioral;
 

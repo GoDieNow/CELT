@@ -36,18 +36,22 @@ end MUX4x4;
 
 architecture Behavioral of MUX4x4 is
 
+	signal SAUX : STD_LOGIC_VECTOR (3 downto 0) := "0000";
+
 begin
 
 	process (S, E0, E1, E2, E3)
 		begin
 			case S is 
-				WHEN "00" => Y <= E0;
-				WHEN "01" => Y <= E1;
-				WHEN "10" => Y <= E2;
-				WHEN "11" => Y <= E3;
-				WHEN OTHERS => Y <= "0000";
+				WHEN "00" => SAUX <= E0;
+				WHEN "01" => SAUX <= E1;
+				WHEN "10" => SAUX <= E2;
+				WHEN "11" => SAUX <= E3;
+				WHEN OTHERS => SAUX <= "0000";
 		end case;
 	end process;
+	
+	Y <= SAUX;
 
 end Behavioral;
 

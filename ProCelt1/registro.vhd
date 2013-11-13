@@ -31,14 +31,18 @@ entity registro is
 end registro;
 
 architecture Behavioral of registro is
+	
+	signal SAUX : STD_LOGIC_VECTOR (13 downto 0) := "00000000000000";
 
 begin
 	process (CLK)
 		begin
 			if CLK'event and CLK='1' then
-				SALIDA <= ENTRADA;
+				SAUX <= ENTRADA;
 			end if;
 	end process;
+	
+	SALIDA <= SAUX;
 
 end Behavioral;
 

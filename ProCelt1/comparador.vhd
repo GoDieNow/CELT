@@ -31,17 +31,24 @@ end comparador;
 
 architecture Behavioral of comparador is
 
+	signal tmp : STD_LOGIC;
+	signal tmp1 : STD_LOGIC;
+
 begin
 	process(P,Q)
 		begin
-			PGTQ <= '0'; 
-			PLEQ <= '0';
+			tmp <= '0'; 
+			tmp1 <= '0';
 			
 			if P > Q then
-				PGTQ <= '1';
+				tmp <= '1';
 			else
-				PLEQ <= '1';
+				tmp1 <= '1';
 			end if;
 	end process;
+	
+	PGTQ <= tmp;
+	PLEQ <= tmp1;
+	
 end Behavioral;
 
