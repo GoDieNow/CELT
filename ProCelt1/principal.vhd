@@ -134,7 +134,8 @@ architecture Behavioral of principal is
 	
 	signal LEDSS : STD_LOGIC_VECTOR (5 downto 0);
 	
-	signal tmp : std_logic_vector(3 downto 0);
+	signal tmp0 : std_logic_vector(3 downto 0);
+	signal tmp2 : std_logic_vector(3 downto 0);
 	
 	-----------------------------
 	-- Constantes del Comparador
@@ -144,12 +145,14 @@ architecture Behavioral of principal is
 	
 	--ALIAS
 	
-	alias AE0 : std_logic_vector(3 downto 0) is SREGV_VISU(3 downto 0);
-	alias AE1 : std_logic_vector(3 downto 0) is SREGV_VISU(7 downto 4);
-	alias AE2 : std_logic_vector(3 downto 0) is SREGV_VISU(11 downto 8);
+	alias AE3 : std_logic_vector(3 downto 0) is SREGV_VISU(3 downto 0);
+	alias AE1 : std_logic_vector(3 downto 0) is SREGV_VISU(10 downto 7);
+	
 begin
 
-	tmp <= "00" & SREGV_VISU(13 downto 12);
+	tmp2 <= "0" & SREGV_VISU(6 downto 4);
+	tmp0 <= "0" & SREGV_VISU(13 downto 11);
+	
 	--------------------------
 	-- Mapeado de Componentes
 	--------------------------
@@ -215,10 +218,10 @@ begin
 	VISUALIZA: visualizacion
     port map (
       CLK  	=> SCLK_V,
-      E0 	=> AE0,
+      E0 	=> tmp0,
       E1 	=> AE1,
-      E2  	=> AE2,
-      E3  	=> tmp,
+      E2  	=> tmp2,
+      E3  	=> AE3,
       SEG7  => SEG7,
 		AN    => AN);
 

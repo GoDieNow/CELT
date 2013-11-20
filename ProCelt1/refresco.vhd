@@ -26,7 +26,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity refresco is
 	port ( 
 			CLK : in STD_LOGIC; -- Reloj
-			S 	 : out STD_LOGIC_VECTOR (1 downto 0);  -- Control para el mux
+			S 	 : out STD_LOGIC_VECTOR (2 downto 0);  -- Control para el mux
 			AN  : out STD_LOGIC_VECTOR (3 downto 0)); -- Control displays individuales
 
 end refresco;
@@ -42,17 +42,8 @@ begin
 		begin
 			if CLK'event and CLK='1' then   -- el periodo del reloj es de 1 ms
 				contador 		<= contador + 1;
-				S 					<= "00";
-				AN 				<= "0000";
 				if contador = 10 then       -- con el transcurso de 10 ms.
-				contador	<=	0;
-					case salida is 
-						WHEN 0 => S <= "00"; 	AN <= "0001";
-						WHEN 1 => S <= "01"; 	AN <= "0010";
-						WHEN 2 => S <= "10"; 	AN <= "0100";
-						WHEN 3 => S <= "11"; 	AN <= "1000";
-						WHEN OTHERS => S <= "00";  AN <= "0000";
-					end case;
+					contador	<=	0;
 					if salida >= 3 then
 						salida <= 0;
 					else
@@ -61,6 +52,20 @@ begin
 				end if;
 			end if;
 	end process;
-
+	
+	with salida select 
+		S <= "000" WHEN 0,
+				"001" WHEN 1,
+				"010" WHEN 2,
+				"011" WHEN 3,
+				"111" WHEN OTHERS;
+		
+	with salida select 
+		AN <= "0001" WHEN 0,
+				"0010" WHEN 1,
+				"0100" WHEN 2,
+				"1000" WHEN 3,
+				"0000" WHEN OTHERS;
+		
 end Behavioral;
 

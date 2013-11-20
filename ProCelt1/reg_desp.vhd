@@ -41,7 +41,7 @@ begin
 		begin
 			if CLK'event and CLK = '1' then
 				if EN = '1' then
-					QAUX <= SIN & QAUX (13 downto 1);
+					QAUX <= QAUX (12 downto 0) & SIN;
 				end if;
 			end if;
 	end process;	
