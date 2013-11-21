@@ -44,28 +44,18 @@ architecture Behavioral of automata is
 	
 begin
 	process (CLK, C0, C1, ST)
-		
 		begin
 		
-					
 		if (CLK'event and CLK = '1') then
 				
 			case ST is
 				when ESP_SYNC =>									-- Estado normal, dura 1 ciclo de reloj
-					LEDS <= "000001";
-					DATO 		<= '0';
-					CAPTUR 	<= '0';
-					VALID 	<= '0';
 					if C0 = '0' and C1 = '0' then
 						ST <= AVAN_ZM;
 					end if;
 			
 				when AVAN_ZM => 									-- Estado que dura 20 ciclos de reloj
-					LEDS <= "000010";
-					cont <= cont + 1;
-					DATO 		<= '0';
-					CAPTUR 	<= '0';
-					VALID 	<= '0';					-- Se incrementa el contador
+					cont <= cont + 1;				-- Se incrementa el contador
 					if(cont = 20) then							-- Si llega a 20
 						cont <= 0;				-- Poner el contador a 0
 						ST <= MUESTREO;							-- Y cambiar de estado
@@ -74,13 +64,9 @@ begin
 					end if;
 				
 				when MUESTREO =>
-					LEDS <= "000100";
 					cont <= cont+1;
-					DATO 		<= '0';
-					CAPTUR 	<= '0';
-					VALID 	<= '0';					-- Se incrementa el contador
-					if(cont = 38) then							-- Si llega a 38
-						cont <= 0;						-- Poner el contador a 0
+					if(cont = 38) then
+						cont <= 0;
 						if C0 = '0' then
 							if C1 = '0' then
 								ST <= DATOSYNC;
@@ -94,37 +80,41 @@ begin
 								ST <= MUESTREO;
 							end if;
 						end if;
---							case tmp is							-- Y cambiar de estado
---							when "00" => ST <= DATOSYNC;
---							when "01" => ST <= DATO1;
---							when "10" => ST <= DATO0;
---							WHEN OTHERS => ST <= MUESTREO;
---						end case;
 					else
-						ST <= MUESTREO;							-- Si no ha llegado a 38 permanecer
+						ST <= MUESTREO;
 					end if;
 					
 				when DATO0 =>
-					LEDS <= "001000";
-					DATO 		<= '0';
-					VALID 	<= '0';
-					CAPTUR 	<= '1';
 					ST			<= MUESTREO;
+				
 				when DATO1 =>
-				LEDS <= "010000";
-					DATO 		<= '1';
-					CAPTUR 	<= '1';
-					VALID 	<= '0';
 					ST			<= MUESTREO;
+				
 				when DATOSYNC =>
-				LEDS <= "101010";
-					VALID 	<= '1';
-					DATO 		<= '0';
-					CAPTUR 	<= '0';
 					ST			<= MUESTREO;
+					
 			end case;
+			
 		end if;
+		
 	end process;
+	
+	-- Salidas
+	
+	DATO 		<= '1' when ST=DATO1 else
+					'0';
+	CAPTUR 	<= '1' when ST=DATO0 else
+					'1' when ST=DATO1 else
+					'0';
+	VALID 	<= '1' when ST=DATOSYNC else
+					'0';
+	LEDS		<= "000001" when ST=ESP_SYNC 	else
+					"000010" when ST=AVAN_ZM 	else
+					"000100" when ST=MUESTREO 	else
+					"001000" when ST=DATO1 		else
+					"010000" when ST=DATO0 		else
+					"100000" when ST=DATOSYNC 	else
+					"000000";
 	
 end Behavioral;
 
