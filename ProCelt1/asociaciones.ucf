@@ -19,7 +19,7 @@ NET "AN<3>" LOC = "F12"; # Activación del display 3 = AN3
  
 #Entrada externa donde se conecta la señal entrante 
 NET "ENTRADA" LOC = "B2"; #Entrada terminal 1
-#NET "LED" LOC = "M5";     # LED 
+NET "LED" LOC = "M5";     # LED 
 #NET "INT" LOC = "P11"; 		# Interruptor
 
 #NET "LED1" LOC = "M11";     # LED0

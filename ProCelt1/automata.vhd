@@ -30,7 +30,6 @@ entity automata is
 			C1 	 : in STD_LOGIC;	 -- Condicin de decisin para "1" 
 			DATO	 : out STD_LOGIC;	 -- Datos a cargar 
 			CAPTUR : out STD_LOGIC;	 -- Enable del reg. de desplaz.
-			--LEDS	 : out STD_LOGIC_VECTOR (5 downto 0);
 			VALID  : out STD_LOGIC); -- Activacin registro end automata; 
 end automata;
 
@@ -40,7 +39,6 @@ architecture Behavioral of automata is
 	
 	signal ST 	: tipo_estado 	:= ESP_SYNC; 	-- Estado inicial en que arranca
 	signal cont : integer 		:= 0; -- contador para contar ciclos de un estado, iniciado a 0
-	-- signal tmp : STD_LOGIC_VECTOR (1 downto 0);
 	
 begin
 	process (CLK, C0, C1, ST)

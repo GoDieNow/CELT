@@ -28,12 +28,12 @@ entity reg_desp is
 			SIN : in STD_LOGIC; -- Datos de entrada serie 
 			CLK : in STD_LOGIC; -- Reloj 
 			EN  : in STD_LOGIC; -- Enable 
-			Q 	 : out STD_LOGIC_VECTOR (13 downto 0)); -- Salida paralelo 
+			Q 	 : out STD_LOGIC_VECTOR (14 downto 0)); -- Salida paralelo 
 end reg_desp;
 
 architecture Behavioral of reg_desp is
 
-	signal QAUX : STD_LOGIC_VECTOR (13 downto 0) := "00000000000000";
+	signal QAUX : STD_LOGIC_VECTOR (14 downto 0) := "000000000000000";
 
 begin
 
@@ -41,7 +41,7 @@ begin
 		begin
 			if CLK'event and CLK = '1' then
 				if EN = '1' then
-					QAUX <= QAUX (12 downto 0) & SIN;
+					QAUX <= QAUX (13 downto 0) & SIN;
 				end if;
 			end if;
 	end process;	

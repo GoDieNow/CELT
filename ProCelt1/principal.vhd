@@ -27,9 +27,8 @@ entity principal is
 
     Port ( CLK 	 : in  STD_LOGIC; -- Entrada reloj
            ENTRADA : in  STD_LOGIC; -- Entrada serie datos
-			  --INT1	 : in  STD_LOGIC;
 			  AN 		 : out STD_LOGIC_VECTOR (3 downto 0); -- Salida de control de displays
-			  --LED     : out   STD_LOGIC;
+			  LED     : out STD_LOGIC;
 			  SEG7	 : out STD_LOGIC_VECTOR(6 DOWNTO 0)); -- Salida hacia displays
 end principal;
 
@@ -78,13 +77,13 @@ architecture Behavioral of principal is
 			SIN : in STD_LOGIC; -- Datos de entrada serie 
 			CLK : in STD_LOGIC; -- Reloj 
 			EN  : in STD_LOGIC; -- Enable 
-			Q 	 : out STD_LOGIC_VECTOR (13 downto 0)); -- Salida paralelo 
+			Q 	 : out STD_LOGIC_VECTOR (14 downto 0)); -- Salida paralelo 
 	end component;
 	
 	component registro
 		port (
-			ENTRADA : in STD_LOGIC_VECTOR (13 downto 0);	 -- Entradas 
-			SALIDA  : out STD_LOGIC_VECTOR (13 downto 0); -- Salidas 
+			ENTRADA : in STD_LOGIC_VECTOR (14 downto 0);	 -- Entradas 
+			SALIDA  : out STD_LOGIC_VECTOR (14 downto 0); -- Salidas 
 			CLK 	  : in STD_LOGIC); -- Reloj 
 	end component;
 	
@@ -95,7 +94,6 @@ architecture Behavioral of principal is
 			C1 	 : in STD_LOGIC;	 -- Condicin de decisin para "1" 
 			DATO	 : out STD_LOGIC;	 -- Datos a cargar 
 			CAPTUR : out STD_LOGIC;	 -- Enable del reg. de desplaz. 
---			LEDS	 : out STD_LOGIC_VECTOR (5 downto 0);
 			VALID  : out STD_LOGIC); -- Activacin registro end automata; 
 	end component;
 	
@@ -124,8 +122,8 @@ architecture Behavioral of principal is
 	signal SAUT_REGV 			: std_logic;
 	signal SAUT_RDESP_CAPT	: std_logic;
 	signal SAUT_RDESP_DAT 	: std_logic;
-	signal SRDESP_REGV   	: std_logic_vector(13 downto 0);
-	signal SREGV_VISU 		: std_logic_vector(13 downto 0);
+	signal SRDESP_REGV   	: std_logic_vector(14 downto 0);
+	signal SREGV_VISU 		: std_logic_vector(14 downto 0);
 	
 	-- signal LEDSS : STD_LOGIC_VECTOR (5 downto 0);
 	
@@ -140,13 +138,13 @@ architecture Behavioral of principal is
 	
 	--ALIAS
 	
-	alias AE3 : std_logic_vector(3 downto 0) is SREGV_VISU(3 downto 0);
-	alias AE1 : std_logic_vector(3 downto 0) is SREGV_VISU(10 downto 7);
+	alias AE3 : std_logic_vector(3 downto 0) is SREGV_VISU(4 downto 1);
+	alias AE1 : std_logic_vector(3 downto 0) is SREGV_VISU(11 downto 8);
 	
 begin
 
-	tmp2 <= '0' & SREGV_VISU(6 downto 4);
-	tmp0 <= '0' & SREGV_VISU(13 downto 11);
+	tmp2 <= '0' & SREGV_VISU(7 downto 5);
+	tmp0 <= '0' & SREGV_VISU(14 downto 12);
 	
 	--------------------------
 	-- Mapeado de Componentes
@@ -219,7 +217,7 @@ begin
       SEG7  => SEG7,
 		AN    => AN);
 
--- LED <= ;
+	LED <= SREGV_VISU(0);
 --	LED1 <= LEDSS(1);
 --	LED2 <= LEDSS(2);
 --	LED3 <= LEDSS(3);
