@@ -26,7 +26,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity refresco is
 	port ( 
 			CLK : in STD_LOGIC; -- Reloj
-			S 	 : out STD_LOGIC_VECTOR (2 downto 0);  -- Control para el mux
+			S 	 : out STD_LOGIC_VECTOR (1 downto 0);  -- Control para el mux
 			AN  : out STD_LOGIC_VECTOR (3 downto 0)); -- Control displays individuales
 
 end refresco;
@@ -34,38 +34,26 @@ end refresco;
 architecture Behavioral of refresco is
 
 	signal contador 	: integer := 0;
-	signal salida 		: integer := 0;
-
+	signal SS 		: STD_LOGIC_VECTOR (1 downto 0) := "00";
+	
 begin
 
 	process (CLK)
 		begin
 			if CLK'event and CLK='1' then   -- el periodo del reloj es de 1 ms
 				contador 		<= contador + 1;
-				if contador = 10 then       -- con el transcurso de 10 ms.
+				if contador = 5 then       -- con el transcurso de 10 ms.
 					contador	<=	0;
-					if salida >= 3 then
-						salida <= 0;
-					else
-						salida <= salida + 1;
-					end if;
+					SS <= SS + 1;
 				end if;
 			end if;
 	end process;
 	
-	with salida select 
-		S <= "000" WHEN 0,
-				"001" WHEN 1,
-				"010" WHEN 2,
-				"011" WHEN 3,
-				"111" WHEN OTHERS;
-		
-	with salida select 
-		AN <= "0001" WHEN 0,
-				"0010" WHEN 1,
-				"0100" WHEN 2,
-				"1000" WHEN 3,
-				"0000" WHEN OTHERS;
-		
+	S <= SS;
+	AN <= "1110" when SS="00" else   -- activa cada display en function del valor de SS
+			"1101" when SS="01" else
+			"1011" when SS="10" else
+			"0111" when SS="11";
+			
 end Behavioral;
 

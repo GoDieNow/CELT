@@ -29,29 +29,19 @@ entity MUX4x4 is
 			E1 : in STD_LOGIC_VECTOR (3 downto 0); -- Entrada 1
 			E2 : in STD_LOGIC_VECTOR (3 downto 0); -- Entrada 2
 			E3 : in STD_LOGIC_VECTOR (3 downto 0); -- Entrada 3
-			S  : in STD_LOGIC_VECTOR (2 downto 0); -- Señal de control
+			S  : in STD_LOGIC_VECTOR (1 downto 0); -- Señal de control
 			Y  : out STD_LOGIC_VECTOR (3 downto 0)); -- Salida
 
 end MUX4x4;
 
 architecture Behavioral of MUX4x4 is
 
-	signal SAUX : STD_LOGIC_VECTOR (3 downto 0) := "0000";
-
 begin
 
-	process (S)
-		begin
-			case S is 
-				WHEN "000" => SAUX <= E0;
-				WHEN "001" => SAUX <= E1;
-				WHEN "010" => SAUX <= E2;
-				WHEN "011" => SAUX <= E3;
-				WHEN OTHERS => SAUX <= "0000";
-		end case;
-	end process;
-	
-	Y <= SAUX;
+Y <= E0 when S="00" else  -- se selecciona la salida en funci�n de las entradas
+     E1 when S="01" else  -- de control
+     E2 when S="10" else
+     E3 when S="11";
 
 end Behavioral;
 

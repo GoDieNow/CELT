@@ -24,17 +24,12 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity principal is
+
     Port ( CLK 	 : in  STD_LOGIC; -- Entrada reloj
            ENTRADA : in  STD_LOGIC; -- Entrada serie datos
+			  --INT1	 : in  STD_LOGIC;
 			  AN 		 : out STD_LOGIC_VECTOR (3 downto 0); -- Salida de control de displays
-			  LED0    : out   STD_LOGIC;
-			  LED1    : out   STD_LOGIC;
-			  LED2    : out   STD_LOGIC;
-			  LED3    : out   STD_LOGIC;
-			  LED4    : out   STD_LOGIC;
-			  LED5    : out   STD_LOGIC;
-			  R1		: out STD_LOGIC;
-			  R2		: out STD_LOGIC;
+			  --LED     : out   STD_LOGIC;
 			  SEG7	 : out STD_LOGIC_VECTOR(6 DOWNTO 0)); -- Salida hacia displays
 end principal;
 
@@ -100,7 +95,7 @@ architecture Behavioral of principal is
 			C1 	 : in STD_LOGIC;	 -- Condicin de decisin para "1" 
 			DATO	 : out STD_LOGIC;	 -- Datos a cargar 
 			CAPTUR : out STD_LOGIC;	 -- Enable del reg. de desplaz. 
-			LEDS	 : out STD_LOGIC_VECTOR (5 downto 0);
+--			LEDS	 : out STD_LOGIC_VECTOR (5 downto 0);
 			VALID  : out STD_LOGIC); -- Activacin registro end automata; 
 	end component;
 	
@@ -132,7 +127,7 @@ architecture Behavioral of principal is
 	signal SRDESP_REGV   	: std_logic_vector(13 downto 0);
 	signal SREGV_VISU 		: std_logic_vector(13 downto 0);
 	
-	signal LEDSS : STD_LOGIC_VECTOR (5 downto 0);
+	-- signal LEDSS : STD_LOGIC_VECTOR (5 downto 0);
 	
 	signal tmp0 : std_logic_vector(3 downto 0);
 	signal tmp2 : std_logic_vector(3 downto 0);
@@ -150,8 +145,8 @@ architecture Behavioral of principal is
 	
 begin
 
-	tmp2 <= "0" & SREGV_VISU(6 downto 4);
-	tmp0 <= "0" & SREGV_VISU(13 downto 11);
+	tmp2 <= '0' & SREGV_VISU(6 downto 4);
+	tmp0 <= '0' & SREGV_VISU(13 downto 11);
 	
 	--------------------------
 	-- Mapeado de Componentes
@@ -199,7 +194,6 @@ begin
       C1 		=> SC_AUT,
       DATO  	=> SAUT_RDESP_DAT,
       CAPTUR   => SAUT_RDESP_CAPT,
-		LEDS   	=> LEDSS,
       VALID    => SAUT_REGV);
 		
 	REG_DESPLAZAMIENTO: reg_desp
@@ -225,21 +219,12 @@ begin
       SEG7  => SEG7,
 		AN    => AN);
 
-
-	LED0 <= LEDSS(0);
-	LED1 <= LEDSS(1);
-	LED2 <= LEDSS(2);
-	LED3 <= LEDSS(3);
-	LED4 <= LEDSS(4);
-	LED5 <= LEDSS(5);
-
-	R1 <= SCLK_M;
-	R2 <= SCLK_V;
-
-
-	------------------------------
-	-- Tooo la Xhixha xD
-	------------------------------
+-- LED <= ;
+--	LED1 <= LEDSS(1);
+--	LED2 <= LEDSS(2);
+--	LED3 <= LEDSS(3);
+--	LED4 <= LEDSS(4);
+--	LED5 <= LEDSS(5);
 
 end Behavioral;
 

@@ -30,7 +30,7 @@ entity automata is
 			C1 	 : in STD_LOGIC;	 -- Condicin de decisin para "1" 
 			DATO	 : out STD_LOGIC;	 -- Datos a cargar 
 			CAPTUR : out STD_LOGIC;	 -- Enable del reg. de desplaz.
-			LEDS	 : out STD_LOGIC_VECTOR (5 downto 0);
+			--LEDS	 : out STD_LOGIC_VECTOR (5 downto 0);
 			VALID  : out STD_LOGIC); -- Activacin registro end automata; 
 end automata;
 
@@ -108,13 +108,13 @@ begin
 					'0';
 	VALID 	<= '1' when ST=DATOSYNC else
 					'0';
-	LEDS		<= "000001" when ST=ESP_SYNC 	else
-					"000010" when ST=AVAN_ZM 	else
-					"000100" when ST=MUESTREO 	else
-					"001000" when ST=DATO1 		else
-					"010000" when ST=DATO0 		else
-					"100000" when ST=DATOSYNC 	else
-					"000000";
+--	LEDS		<= "000001" when ST=ESP_SYNC 	else
+--					"000010" when ST=AVAN_ZM 	else
+--					"000100" when ST=MUESTREO 	else
+--					"001000" when ST=DATO1 		else
+--					"010000" when ST=DATO0 		else
+--					"100000" when ST=DATOSYNC 	else
+--					"000000";
 	
 end Behavioral;
 

@@ -28,7 +28,7 @@ entity visualizacion is
 			E0 	: in STD_LOGIC_VECTOR (3 downto 0); -- Entrada MUX 0 
 			E1 	: in STD_LOGIC_VECTOR (3 downto 0); -- Entrada MUX 1 
 			E2 	: in STD_LOGIC_VECTOR (3 downto 0); -- Entrada MUX 2 
-			E3 	: in STD_LOGIC_VECTOR (3 downto 0); -- Entrada MUX 3 
+			E3 	: in STD_LOGIC_VECTOR (3 downto 0); -- Entrada MUX 3
 			CLK 	: in STD_LOGIC; -- Entrada de reloj de refresco 
 			SEG7 	: out STD_LOGIC_VECTOR (0 to 6); -- Salida para los displays 
 			AN 	: out STD_LOGIC_VECTOR (3 downto 0)); -- Activacin 
@@ -45,7 +45,7 @@ architecture Behavioral of visualizacion is
 				E1 : in STD_LOGIC_VECTOR (3 downto 0); -- Entrada 1
 				E2 : in STD_LOGIC_VECTOR (3 downto 0); -- Entrada 2
 				E3 : in STD_LOGIC_VECTOR (3 downto 0); -- Entrada 3
-				S  : in STD_LOGIC_VECTOR (2 downto 0); -- Señal de control
+				S  : in STD_LOGIC_VECTOR (1 downto 0); -- Señal de control
 				Y  : out STD_LOGIC_VECTOR (3 downto 0)); -- Salida
 	end component;
 	
@@ -58,14 +58,14 @@ architecture Behavioral of visualizacion is
 	component refresco
 		port ( 
 				CLK : in STD_LOGIC; -- Reloj
-				S 	 : out STD_LOGIC_VECTOR (2 downto 0);  -- Control para el mux
+				S 	 : out STD_LOGIC_VECTOR (1 downto 0);  -- Control para el mux
 				AN  : out STD_LOGIC_VECTOR (3 downto 0)); -- Control displays individuales
 	end component;
 
 	----------------------
 	-- Señales de mapeado
 	----------------------
-	signal SREF_MUX  : std_logic_vector(2 downto 0);
+	signal SREF_MUX  : std_logic_vector(1 downto 0);
 	signal SMUX_DECO : std_logic_vector(3 downto 0);
 
 begin
