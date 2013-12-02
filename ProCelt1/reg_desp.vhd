@@ -25,28 +25,31 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity reg_desp is
 	port (
-			SIN : in STD_LOGIC; -- Datos de entrada serie 
-			CLK : in STD_LOGIC; -- Reloj 
-			EN  : in STD_LOGIC; -- Enable 
-			Q 	 : out STD_LOGIC_VECTOR (13 downto 0)); -- Salida paralelo 
+			SIN : in STD_LOGIC; 															-- Datos de entrada serie 
+			CLK : in STD_LOGIC; 															-- Reloj 
+			EN  : in STD_LOGIC; 															-- Enable del modulo
+			Q 	 : out STD_LOGIC_VECTOR (13 downto 0)); 							-- Salida paralelo 
 end reg_desp;
 
 architecture Behavioral of reg_desp is
 
-	signal QAUX : STD_LOGIC_VECTOR (13 downto 0) := "00000000000000";
+	-----------------------------
+	-- DEclaracion de señales
+	-----------------------------
+	signal QAUX : STD_LOGIC_VECTOR (13 downto 0) := "00000000000000";		-- Señal auxiliar de 14 bits
 
 begin
 
 	process(CLK)
 		begin
-			if CLK'event and CLK = '1' then
-				if EN = '1' then
-					QAUX <= QAUX (12 downto 0) & SIN;
+			if CLK'event and CLK = '1' then											-- Condicion de cambio de flanco activo a nivel alto
+				if EN = '1' then															-- Enable a 1
+					QAUX <= QAUX (12 downto 0) & SIN;								-- Añadimos la entrada al final de la señal auxiliar
 				end if;
 			end if;
 	end process;	
 
-	Q <= QAUX;
+	Q <= QAUX;																				-- Metemos la señal auxiliar en la salida
 
 
 end Behavioral;

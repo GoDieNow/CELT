@@ -25,13 +25,13 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity visualizacion is
 		port (
-			E0 	: in STD_LOGIC_VECTOR (3 downto 0); -- Entrada MUX 0 
-			E1 	: in STD_LOGIC_VECTOR (3 downto 0); -- Entrada MUX 1 
-			E2 	: in STD_LOGIC_VECTOR (3 downto 0); -- Entrada MUX 2 
-			E3 	: in STD_LOGIC_VECTOR (3 downto 0); -- Entrada MUX 3
-			CLK 	: in STD_LOGIC; -- Entrada de reloj de refresco 
-			SEG7 	: out STD_LOGIC_VECTOR (0 to 6); -- Salida para los displays 
-			AN 	: out STD_LOGIC_VECTOR (3 downto 0)); -- Activacin 
+			E0 	: in STD_LOGIC_VECTOR (3 downto 0); 		-- Entrada MUX 0 
+			E1 	: in STD_LOGIC_VECTOR (3 downto 0); 		-- Entrada MUX 1 
+			E2 	: in STD_LOGIC_VECTOR (3 downto 0); 		-- Entrada MUX 2 
+			E3 	: in STD_LOGIC_VECTOR (3 downto 0); 		-- Entrada MUX 3
+			CLK 	: in STD_LOGIC; 									-- Entrada de reloj de refresco 
+			SEG7 	: out STD_LOGIC_VECTOR (0 to 6); 			-- Salida para los displays 
+			AN 	: out STD_LOGIC_VECTOR (3 downto 0)); 		-- Activacion 
 end visualizacion;
 
 architecture Behavioral of visualizacion is
@@ -41,32 +41,32 @@ architecture Behavioral of visualizacion is
 	-----------------------------
 	component MUX4x4
 		port ( 
-				E0 : in STD_LOGIC_VECTOR (3 downto 0); -- Entrada 0
-				E1 : in STD_LOGIC_VECTOR (3 downto 0); -- Entrada 1
-				E2 : in STD_LOGIC_VECTOR (3 downto 0); -- Entrada 2
-				E3 : in STD_LOGIC_VECTOR (3 downto 0); -- Entrada 3
-				S  : in STD_LOGIC_VECTOR (1 downto 0); -- Se√±al de control
-				Y  : out STD_LOGIC_VECTOR (3 downto 0)); -- Salida
+				E0 : in STD_LOGIC_VECTOR (3 downto 0); 		-- Entrada 0
+				E1 : in STD_LOGIC_VECTOR (3 downto 0); 		-- Entrada 1
+				E2 : in STD_LOGIC_VECTOR (3 downto 0); 		-- Entrada 2
+				E3 : in STD_LOGIC_VECTOR (3 downto 0); 		-- Entrada 3
+				S  : in STD_LOGIC_VECTOR (1 downto 0); 		-- Se√±al de control
+				Y  : out STD_LOGIC_VECTOR (3 downto 0)); 		-- Salida
 	end component;
 	
 	component decod7s
 		port (
-				D : in STD_LOGIC_VECTOR (3 downto 0); -- Entrada BCD
-				S : out STD_LOGIC_VECTOR (0 to 6));   -- Salida para excitar los displays
+				D : in STD_LOGIC_VECTOR (3 downto 0); 			-- Entrada BCD
+				S : out STD_LOGIC_VECTOR (0 to 6));   			-- Salida para excitar los displays
 	end component;
 	
 	component refresco
 		port ( 
-				CLK : in STD_LOGIC; -- Reloj
-				S 	 : out STD_LOGIC_VECTOR (1 downto 0);  -- Control para el mux
-				AN  : out STD_LOGIC_VECTOR (3 downto 0)); -- Control displays individuales
+				CLK : in STD_LOGIC; 									-- Reloj
+				S 	 : out STD_LOGIC_VECTOR (1 downto 0);  	-- Control para el mux
+				AN  : out STD_LOGIC_VECTOR (3 downto 0)); 	-- Control displays individuales
 	end component;
 
 	----------------------
 	-- Se√±ales de mapeado
 	----------------------
-	signal SREF_MUX  : std_logic_vector(1 downto 0);
-	signal SMUX_DECO : std_logic_vector(3 downto 0);
+	signal SREF_MUX  : std_logic_vector(1 downto 0);		-- SeÒal Refresco-Multiplexor
+	signal SMUX_DECO : std_logic_vector(3 downto 0);		-- SeÒal multiplexor-Decodificador
 
 begin
 	--------------------------

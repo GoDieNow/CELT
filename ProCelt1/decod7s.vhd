@@ -25,15 +25,15 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity decod7s is
 	port (
-			D : in STD_LOGIC_VECTOR (3 downto 0); -- Entrada BCD
-			S : out STD_LOGIC_VECTOR (0 to 6));   -- Salida para excitar los displays
+			D : in STD_LOGIC_VECTOR (3 downto 0); 	-- Entrada BCD
+			S : out STD_LOGIC_VECTOR (0 to 6));   	-- Salida para excitar los displays
 
 end decod7s;
 
 architecture Behavioral of decod7s is
 begin
 
-	with D select S <=
+	with D select S <=									-- Seleccion de LEDs encendidos segun una entrada
 		"0000001" when "0000",
 		"1001111" when "0001",
 		"0010010" when "0010",

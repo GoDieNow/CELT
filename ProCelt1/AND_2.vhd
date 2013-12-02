@@ -23,27 +23,30 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity AND_2 is
 		port (
-			A : in STD_LOGIC;	  -- Entrada A 
-			B : in STD_LOGIC;   -- Entrada B 
-			S : out STD_LOGIC); -- Salida
+			A : in STD_LOGIC;	  				-- Entrada A 
+			B : in STD_LOGIC;   				-- Entrada B 
+			S : out STD_LOGIC); 				-- Salida
 end AND_2;
 
 architecture Behavioral of AND_2 is
 
+	---------------------------
+	-- Declaracion de señales
+	---------------------------
 	signal tmp : STD_LOGIC;
 
 begin
 
 	process (A,B) 
 		begin
-			if A = '1' AND B = '1' THEN 
-				tmp <= '1'; 
-			else 
-				tmp <= '0'; 
+			if A = '1' AND B = '1' THEN 	-- Cuando A y B son 1
+				tmp <= '1'; 					-- Ponemos tmp a 1
+			else 	
+				tmp <= '0'; 					-- Si cualquiera de los dos es 0, ponemos tmp a 0
 			end if; 
 	end process;
 	
-	S <= tmp; 
+	S <= tmp; 									-- Metemos la señal tmp en la salida
 	
 end Behavioral;
 

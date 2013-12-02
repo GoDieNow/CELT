@@ -25,24 +25,28 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity registro is
 		port (
-			ENTRADA : in STD_LOGIC_VECTOR (13 downto 0);	 -- Entradas 
-			SALIDA  : out STD_LOGIC_VECTOR (13 downto 0); -- Salidas 
-			CLK 	  : in STD_LOGIC); -- Reloj 
+			ENTRADA : in STD_LOGIC_VECTOR (13 downto 0);		 				-- Entradas de 14 bits
+			SALIDA  : out STD_LOGIC_VECTOR (13 downto 0); 					-- Salidas de 14 bits
+			CLK 	  : in STD_LOGIC); 												-- Reloj 
 end registro;
 
 architecture Behavioral of registro is
 	
-	signal SAUX : STD_LOGIC_VECTOR (13 downto 0) := "00000000000000";
+	-----------------------------
+	-- Creacion de señales
+	-----------------------------
+	
+	signal SAUX : STD_LOGIC_VECTOR (13 downto 0) := "00000000000000";	-- CReamos señal auxiliar de 14 bits
 
 begin
 	process (CLK)
 		begin
-			if CLK'event and CLK='1' then
-				SAUX <= ENTRADA;
+			if CLK'event and CLK='1' then											-- Condicion de cambio de flanco activo a nivel alto
+				SAUX <= ENTRADA;														-- Metemos la señal de entrada en la auxiliar
 			end if;
 	end process;
 	
-	SALIDA <= SAUX;
+	SALIDA <= SAUX;																	-- Metemos la señal auxiliar en la salida
 
 end Behavioral;
 
