@@ -25,24 +25,28 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity registro is
 		port (
-			ENTRADA : in STD_LOGIC_VECTOR (14 downto 0);	 -- Entradas 
-			SALIDA  : out STD_LOGIC_VECTOR (14 downto 0); -- Salidas 
-			CLK 	  : in STD_LOGIC); -- Reloj 
+			ENTRADA : in STD_LOGIC_VECTOR (14 downto 0);	 						-- Entrada al registo (15 bits) 
+			SALIDA  : out STD_LOGIC_VECTOR (14 downto 0); 						-- Salida del registro (15 bits)
+			CLK 	  : in STD_LOGIC); 													-- Reloj 
 end registro;
 
 architecture Behavioral of registro is
 	
-	signal SAUX : STD_LOGIC_VECTOR (14 downto 0) := "000000000000000";
+	---------------------------
+	-- Declaracion de señales
+	---------------------------
+	
+	signal SAUX : STD_LOGIC_VECTOR (14 downto 0) := "000000000000000";	-- Señal auziliar de 15 bits para evitar 'UU'
 
 begin
 	process (CLK)
 		begin
-			if CLK'event and CLK='1' then
-				SAUX <= ENTRADA;
+			if CLK'event and CLK='1' then												-- Condicion de activacion de CLK a nivel alto
+				SAUX <= ENTRADA;															-- Metemos entrada en la señal auxiliar de salida
 			end if;
 	end process;
 	
-	SALIDA <= SAUX;
+	SALIDA <= SAUX;																		-- Metemos la señal auxiliar a la salida
 
 end Behavioral;
 

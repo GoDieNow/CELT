@@ -25,12 +25,16 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity sumador40 is
 	port (
-			ENT : in STD_LOGIC_VECTOR (39 downto 0);	-- entradas (40 bits) 
-			SAL : out STD_LOGIC_VECTOR (5 downto 0)); -- salida (6 bits) 
+			ENT : in STD_LOGIC_VECTOR (39 downto 0);			-- Entrada (40 bits) 
+			SAL : out STD_LOGIC_VECTOR (5 downto 0)); 		-- Salida (6 bits) 
 end sumador40;
 
 architecture Behavioral of sumador40 is
 
+	-----------------------------
+	-- Declaracion de señales
+	-----------------------------
+	
 	signal E0 : STD_LOGIC_VECTOR (5 downto 0);
 	signal E1 : STD_LOGIC_VECTOR (5 downto 0);
 	signal E2 : STD_LOGIC_VECTOR (5 downto 0);
@@ -74,7 +78,7 @@ architecture Behavioral of sumador40 is
 
 begin
 
-	E39<="00000"&ENT(39);
+	E39<="00000"&ENT(39);										-- Generamos 40 señales de 5 bits "00001"
 	E38<="00000"&ENT(38);
 	E37<="00000"&ENT(37);
 	E36<="00000"&ENT(36);
@@ -115,7 +119,7 @@ begin
 	E1<="00000"&ENT(1);
 	E0<="00000"&ENT(0);
 	
-	SAL<=E39+E38+E37+E36+E35+E34+E33+E32+E31+E30+E29+E28+E27+
+	SAL<=E39+E38+E37+E36+E35+E34+E33+E32+E31+E30+E29+E28+E27+	-- Sumamos todas las entradas
 		  E26+E25+E24+E23+E22+E21+E20+E19+E18+E17+E16+E15+E14+
 		  E13+E12+E11+E10+E9+E8+E7+E6+E5+E4+E3+E2+E1+E0;
 

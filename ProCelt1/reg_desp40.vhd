@@ -25,25 +25,29 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity reg_desp40 is
 	port ( 
-			SIN : in STD_LOGIC; -- Datos de entrada serie 
-			CLK : in STD_LOGIC; -- Reloj 
-			Q	 : out STD_LOGIC_VECTOR (39 downto 0)); -- Salida paralelo 
+			SIN : in STD_LOGIC; 									-- Datos de entrada en serie 
+			CLK : in STD_LOGIC; 									-- Reloj del sistema
+			Q	 : out STD_LOGIC_VECTOR (39 downto 0)); 	-- Salida paralelo 
 end reg_desp40;
 
 architecture Behavioral of reg_desp40 is
 
-	signal QAUX : STD_LOGIC_VECTOR (39 downto 0) := "0000000000000000000000000000000000000000";
+	-----------------------------
+	-- Declaracion de señales
+	-----------------------------
+	
+	signal QAUX : STD_LOGIC_VECTOR (39 downto 0) := "0000000000000000000000000000000000000000"; -- Señal auxiliar de 40 bits inicializada a 0
 
 begin
 
 	process(CLK)
 		begin
-			if CLK'event and CLK = '1' then
-				QAUX <= SIN & QAUX (39 downto 1);
+			if CLK'event and CLK = '1' then					-- Ponemos de condición cambio en CLK a nivel alto
+				QAUX <= SIN & QAUX (39 downto 1);			-- Concatenamos a la señal de entada la autiliar
 			end if;
 	end process;	
 
-	Q <= QAUX;
+	Q <= QAUX;														-- Sacamos la señal obtenida del módulo
 
 end Behavioral;
 
