@@ -28,6 +28,13 @@ entity principal is
     Port ( CLK 	 : in  STD_LOGIC; 												-- Entrada reloj
            ENTRADA : in  STD_LOGIC;										 		   -- Entrada serie datos
 			  PUL		 : in	 STD_LOGIC;
+			  LED0	 : out STD_LOGIC;
+			  LED1	 : out STD_LOGIC;
+			  LED2	 : out STD_LOGIC;
+			  LED3	 : out STD_LOGIC;
+			  LED4	 : out STD_LOGIC;
+			  LED5	 : out STD_LOGIC;
+			  LED6	 : out STD_LOGIC;
 			  AN 		 : out STD_LOGIC_VECTOR (3 downto 0); 						-- Salida de control de displays
 			  SEG7	 : out STD_LOGIC_VECTOR (6 DOWNTO 0)); 					-- Salida hacia displays
 end principal;
@@ -236,6 +243,18 @@ begin
       E3  	=> AE3,
       SEG7  => SEG7,
 		AN    => AN);
+
+	-----------
+	-- Salidas
+	-----------
+	
+	LED0 <= ;
+	LED1 <= ;
+	LED2 <= ;
+	LED3 <= ;
+	LED4 <= ;
+	LED5 <= ;
+	LED6 <= ;
 
 end Behavioral;
 
