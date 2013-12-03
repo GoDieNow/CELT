@@ -26,9 +26,10 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity principal is
 
     Port ( CLK 	 : in  STD_LOGIC; 												-- Entrada reloj
-           ENTRADA : in  STD_LOGIC; 												-- Entrada serie datos
+           ENTRADA : in  STD_LOGIC;										 		   -- Entrada serie datos
+			  PUL		 : in	 STD_LOGIC;
 			  AN 		 : out STD_LOGIC_VECTOR (3 downto 0); 						-- Salida de control de displays
-			  SEG7	 : out STD_LOGIC_VECTOR(6 DOWNTO 0)); 						-- Salida hacia displays
+			  SEG7	 : out STD_LOGIC_VECTOR (6 DOWNTO 0)); 					-- Salida hacia displays
 end principal;
 
 architecture Behavioral of principal is
@@ -76,14 +77,22 @@ architecture Behavioral of principal is
 			SIN : in STD_LOGIC; 															-- Datos de entrada serie 
 			CLK : in STD_LOGIC; 															-- Reloj 
 			EN  : in STD_LOGIC; 															-- Enable 
-			Q 	 : out STD_LOGIC_VECTOR (13 downto 0)); 							-- Salida paralelo 
+			Q 	 : out STD_LOGIC_VECTOR (27 downto 0)); 							-- Salida paralelo 
 	end component;
 	
 	component registro
 		port (
-			ENTRADA : in STD_LOGIC_VECTOR (13 downto 0);	 						-- Entradas 
-			SALIDA  : out STD_LOGIC_VECTOR (13 downto 0); 						-- Salidas 
+			ENTRADA : in STD_LOGIC_VECTOR (27 downto 0);	 						-- Entradas 
+			SALIDA  : out STD_LOGIC_VECTOR (27 downto 0); 						-- Salidas 
 			CLK 	  : in STD_LOGIC); 													-- Reloj 
+	end component;
+	
+	component MUX2x14
+		port ( 
+				E0 : in STD_LOGIC_VECTOR (13 downto 0); 							-- Entrada 0
+				E1 : in STD_LOGIC_VECTOR (13 downto 0); 							-- Entrada 1
+				S  : in STD_LOGIC; 														-- SeÃ±al de control
+				Y  : out STD_LOGIC_VECTOR (13 downto 0)); 						-- Salida
 	end component;
 	
 	component automata
@@ -93,7 +102,6 @@ architecture Behavioral of principal is
 			C1 	 : in STD_LOGIC;	 													-- Condicion de decision para "1" 
 			DATO	 : out STD_LOGIC;	 													-- Datos a cargar 
 			CAPTUR : out STD_LOGIC;	 													-- Enable del reg. de desplaz. 
---			LEDS	 : out STD_LOGIC_VECTOR (5 downto 0);
 			VALID  : out STD_LOGIC); 													-- Activacion registro end automata; 
 	end component;
 	
@@ -111,22 +119,23 @@ architecture Behavioral of principal is
 	----------------------
 	-- SeÃ±ales de mapeado
 	----------------------
-	signal SCLK_M		      : std_logic;											-- Señal divisor-CLK_M
-	signal SCLK_V		      : std_logic;											-- Señal divisor-CLK_V
-	signal SRD_I			   : std_logic_vector(39 downto 0);					-- Señal Reg. desp-integrador
-	signal SI_C					: std_logic_vector(5 downto 0);					-- Señal integrador-comparador
-	signal SC_AND1			   : std_logic;											-- Señal comparador-AND
-	signal SC_AND2			   : std_logic;											-- Señal comparador-AND
-	signal SC_AUT   		   : std_logic;											--	Señal comparador-automata
-	signal SAND_AUT    		: std_logic;											-- Señal AND-automata
-	signal SAUT_REGV 			: std_logic;											-- Señal automata-Reg
-	signal SAUT_RDESP_CAPT	: std_logic;											-- Señal automata_Capt-Reg. desp
-	signal SAUT_RDESP_DAT 	: std_logic;											-- Señal automata_Dato-Reg. desp
-	signal SRDESP_REGV   	: std_logic_vector(13 downto 0);					--	Señal Reg. desp-Reg.
-	signal SREGV_VISU 		: std_logic_vector(13 downto 0);					-- Señal Reg-Visualizacion
+	signal SCLK_M		      : std_logic;											-- Seal divisor-CLK_M
+	signal SCLK_V		      : std_logic;											-- Seal divisor-CLK_V
+	signal SRD_I			   : std_logic_vector(39 downto 0);					-- Seal Reg. desp-integrador
+	signal SI_C					: std_logic_vector(5 downto 0);					-- Seal integrador-comparador
+	signal SC_AND1			   : std_logic;											-- Seal comparador-AND
+	signal SC_AND2			   : std_logic;											-- Seal comparador-AND
+	signal SC_AUT   		   : std_logic;											--	Seal comparador-automata
+	signal SAND_AUT    		: std_logic;											-- Seal AND-automata
+	signal SAUT_REGV 			: std_logic;											-- Seal automata-Reg
+	signal SAUT_RDESP_CAPT	: std_logic;											-- Seal automata_Capt-Reg. desp
+	signal SAUT_RDESP_DAT 	: std_logic;											-- Seal automata_Dato-Reg. desp
+	signal SRDESP_REGV   	: std_logic_vector(27 downto 0);					--	Seal Reg. desp-Reg.
+	signal SREGV_MUX 			: std_logic_vector(27 downto 0);					-- Seal Reg-MUX
+	signal SMUX_VISU 			: std_logic_vector(13 downto 0);					-- Seal MUX-Visualizacion
 	
-	signal tmp0 : std_logic_vector(3 downto 0);									-- Creamos señal temporal
-	signal tmp2 : std_logic_vector(3 downto 0);									-- Creamos señal temporal
+	signal tmp0 : std_logic_vector(3 downto 0);									-- Creamos seal temporal
+	signal tmp2 : std_logic_vector(3 downto 0);									-- Creamos seal temporal
 	
 	-----------------------------
 	-- Constantes del Comparador
@@ -138,13 +147,16 @@ architecture Behavioral of principal is
 	-- Alias
 	----------
 	
-	alias AE3 : std_logic_vector(3 downto 0) is SREGV_VISU(3 downto 0);	-- Señal particion de otra señal
-	alias AE1 : std_logic_vector(3 downto 0) is SREGV_VISU(10 downto 7);	-- Señal particion de otra señal
+	alias AE3 : std_logic_vector(3 downto 0) is SMUX_VISU(3 downto 0);	-- Seal particion de otra seal
+	alias AE1 : std_logic_vector(3 downto 0) is SMUX_VISU(10 downto 7);	-- Seal particion de otra seal
+	
+	alias AM0 : std_logic_vector(3 downto 0) is SREG_MUX(13 downto 0);	-- Seal particion de otra seal
+	alias AM1 : std_logic_vector(3 downto 0) is SREG_MUX(27 downto 14);	-- Seal particion de otra seal
 	
 begin
 
-	tmp2 <= '0' & SREGV_VISU(6 downto 4);											-- Añadimos un 0 al principio de otra señal
-	tmp0 <= '0' & SREGV_VISU(13 downto 11);										-- Añadimos un 0 al principio de otra señal
+	tmp2 <= '0' & SMUX_VISU(6 downto 4);											-- Aadimos un 0 al principio de otra seal
+	tmp0 <= '0' & SMUX_VISU(13 downto 11);											-- Aadimos un 0 al principio de otra seal
 	
 	--------------------------
 	-- Mapeado de Componentes
@@ -203,11 +215,18 @@ begin
       Q  	=> SRDESP_REGV);
 
 	REGIST: registro
-    port map (
+	 port map (
       CLK     => SAUT_REGV,
       ENTRADA => SRDESP_REGV,
-      SALIDA  => SREGV_VISU);
+      SALIDA  => SREGV_MUX);
 
+	MUX: MUX2x14
+	 port map (
+		E0 => AM0,
+		E1 => AM1,
+		S  => PUL,
+		Y  => SMUX_VISU);
+	
 	VISUALIZA: visualizacion
     port map (
       CLK  	=> SCLK_V,
@@ -217,13 +236,6 @@ begin
       E3  	=> AE3,
       SEG7  => SEG7,
 		AN    => AN);
-
--- LED <= ;
---	LED1 <= LEDSS(1);
---	LED2 <= LEDSS(2);
---	LED3 <= LEDSS(3);
---	LED4 <= LEDSS(4);
---	LED5 <= LEDSS(5);
 
 end Behavioral;
 

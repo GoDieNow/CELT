@@ -33,20 +33,20 @@ end registro;
 architecture Behavioral of registro is
 	
 	-----------------------------
-	-- Creacion de señales
+	-- Creacion de seales
 	-----------------------------
 	
-	signal SAUX : STD_LOGIC_VECTOR (13 downto 0) := "00000000000000";	-- CReamos señal auxiliar de 14 bits
+	signal SAUX : STD_LOGIC_VECTOR (13 downto 0) := "00000000000000";	-- Creamos seal auxiliar de 14 bits
 
 begin
 	process (CLK)
 		begin
 			if CLK'event and CLK='1' then											-- Condicion de cambio de flanco activo a nivel alto
-				SAUX <= ENTRADA;														-- Metemos la señal de entrada en la auxiliar
+				SAUX <= ENTRADA;														-- Metemos la seal de entrada en la auxiliar
 			end if;
 	end process;
 	
-	SALIDA <= SAUX;																	-- Metemos la señal auxiliar en la salida
+	SALIDA <= SAUX;																	-- Metemos la seal auxiliar en la salida
 
 end Behavioral;
 
