@@ -27,7 +27,7 @@ entity principal is
 
     Port ( CLK 	 : in  STD_LOGIC; 												-- Entrada reloj
            ENTRADA : in  STD_LOGIC;										 		   -- Entrada serie datos
-			  PUL		 : in	 STD_LOGIC;
+			  PUL		 : in	 STD_LOGIC;													-- Pulsador de cambio de Hora<->Fecha
 			  AN 		 : out STD_LOGIC_VECTOR (3 downto 0); 						-- Salida de control de displays
 			  SEG7	 : out STD_LOGIC_VECTOR (6 DOWNTO 0)); 					-- Salida hacia displays
 end principal;
@@ -150,8 +150,8 @@ architecture Behavioral of principal is
 	alias AE3 : std_logic_vector(3 downto 0) is SMUX_VISU(3 downto 0);	-- Seal particion de otra seal
 	alias AE1 : std_logic_vector(3 downto 0) is SMUX_VISU(10 downto 7);	-- Seal particion de otra seal
 	
-	alias AM0 : std_logic_vector(3 downto 0) is SREG_MUX(13 downto 0);	-- Seal particion de otra seal
-	alias AM1 : std_logic_vector(3 downto 0) is SREG_MUX(27 downto 14);	-- Seal particion de otra seal
+	alias AM1 : std_logic_vector(13 downto 0) is SREGV_MUX(13 downto 0);	-- Seal particion de otra seal
+	alias AM0 : std_logic_vector(13 downto 0) is SREGV_MUX(27 downto 14);	-- Seal particion de otra seal
 	
 begin
 

@@ -25,8 +25,8 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity registro is
 		port (
-			ENTRADA : in STD_LOGIC_VECTOR (13 downto 0);		 				-- Entradas de 14 bits
-			SALIDA  : out STD_LOGIC_VECTOR (13 downto 0); 					-- Salidas de 14 bits
+			ENTRADA : in STD_LOGIC_VECTOR (27 downto 0);		 				-- Entradas de 14 bits
+			SALIDA  : out STD_LOGIC_VECTOR (27 downto 0); 					-- Salidas de 14 bits
 			CLK 	  : in STD_LOGIC); 												-- Reloj 
 end registro;
 
@@ -36,7 +36,7 @@ architecture Behavioral of registro is
 	-- Creacion de seales
 	-----------------------------
 	
-	signal SAUX : STD_LOGIC_VECTOR (13 downto 0) := "00000000000000";	-- Creamos seal auxiliar de 14 bits
+	signal SAUX : STD_LOGIC_VECTOR (27 downto 0) := "0000000000000000000000000000";	-- Creamos seal auxiliar de 14 bits
 
 begin
 	process (CLK)
