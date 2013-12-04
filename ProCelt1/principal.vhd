@@ -84,13 +84,13 @@ architecture Behavioral of principal is
 			SIN : in STD_LOGIC; 															-- Datos de entrada serie 
 			CLK : in STD_LOGIC; 															-- Reloj 
 			EN  : in STD_LOGIC; 															-- Enable 
-			Q 	 : out STD_LOGIC_VECTOR (27 downto 0)); 							-- Salida paralelo 
+			Q 	 : out STD_LOGIC_VECTOR (30 downto 0)); 							-- Salida paralelo 
 	end component;
 	
 	component registro
 		port (
-			ENTRADA : in STD_LOGIC_VECTOR (27 downto 0);	 						-- Entradas 
-			SALIDA  : out STD_LOGIC_VECTOR (27 downto 0); 						-- Salidas 
+			ENTRADA : in STD_LOGIC_VECTOR (30 downto 0);	 						-- Entradas 
+			SALIDA  : out STD_LOGIC_VECTOR (30 downto 0); 						-- Salidas 
 			CLK 	  : in STD_LOGIC); 													-- Reloj 
 	end component;
 	
@@ -137,8 +137,8 @@ architecture Behavioral of principal is
 	signal SAUT_REGV 			: std_logic;											-- Seal automata-Reg
 	signal SAUT_RDESP_CAPT	: std_logic;											-- Seal automata_Capt-Reg. desp
 	signal SAUT_RDESP_DAT 	: std_logic;											-- Seal automata_Dato-Reg. desp
-	signal SRDESP_REGV   	: std_logic_vector(27 downto 0);					--	Seal Reg. desp-Reg.
-	signal SREGV_MUX 			: std_logic_vector(27 downto 0);					-- Seal Reg-MUX
+	signal SRDESP_REGV   	: std_logic_vector(30 downto 0);					--	Seal Reg. desp-Reg.
+	signal SREGV_MUX 			: std_logic_vector(30 downto 0);					-- Seal Reg-MUX
 	signal SMUX_VISU 			: std_logic_vector(13 downto 0);					-- Seal MUX-Visualizacion
 	
 	signal tmp0 : std_logic_vector(3 downto 0);									-- Creamos seal temporal
@@ -157,8 +157,8 @@ architecture Behavioral of principal is
 	alias AE3 : std_logic_vector(3 downto 0) is SMUX_VISU(3 downto 0);	-- Seal particion de otra seal
 	alias AE1 : std_logic_vector(3 downto 0) is SMUX_VISU(10 downto 7);	-- Seal particion de otra seal
 	
-	alias AM0 : std_logic_vector(3 downto 0) is SREG_MUX(13 downto 0);	-- Seal particion de otra seal
-	alias AM1 : std_logic_vector(3 downto 0) is SREG_MUX(27 downto 14);	-- Seal particion de otra seal
+	alias AM1 : std_logic_vector(13 downto 0) is SREGV_MUX(16 downto 3);	-- Seal particion de otra seal
+	alias AM0 : std_logic_vector(13 downto 0) is SREGV_MUX(30 downto 17);	-- Seal particion de otra seal
 	
 begin
 
@@ -248,13 +248,20 @@ begin
 	-- Salidas
 	-----------
 	
-	LED0 <= ;
-	LED1 <= ;
-	LED2 <= ;
-	LED3 <= ;
-	LED4 <= ;
-	LED5 <= ;
-	LED6 <= ;
+	LED0 <= '1' when SREGV_MUX(3 downto 0)="000" else
+			  '0';
+	LED1 <= '1' when SREGV_MUX(3 downto 0)="001" else
+			  '0';
+	LED2 <= '1' when SREGV_MUX(3 downto 0)="010" else
+			  '0';
+	LED3 <= '1' when SREGV_MUX(3 downto 0)="011" else
+			  '0';
+	LED4 <= '1' when SREGV_MUX(3 downto 0)="100" else
+			  '0';
+	LED5 <= '1' when SREGV_MUX(3 downto 0)="101" else
+			  '0';
+	LED6 <= '1' when SREGV_MUX(3 downto 0)="110" else
+			  '0';
 
 end Behavioral;
 

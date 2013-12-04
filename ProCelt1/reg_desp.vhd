@@ -28,7 +28,7 @@ entity reg_desp is
 			SIN : in STD_LOGIC; 															-- Datos de entrada serie 
 			CLK : in STD_LOGIC; 															-- Reloj 
 			EN  : in STD_LOGIC; 															-- Enable del modulo
-			Q 	 : out STD_LOGIC_VECTOR (13 downto 0)); 							-- Salida paralelo 
+			Q 	 : out STD_LOGIC_VECTOR (30 downto 0)); 							-- Salida paralelo 
 end reg_desp;
 
 architecture Behavioral of reg_desp is
@@ -36,7 +36,7 @@ architecture Behavioral of reg_desp is
 	-----------------------------
 	-- DEclaracion de señales
 	-----------------------------
-	signal QAUX : STD_LOGIC_VECTOR (13 downto 0) := "00000000000000";		-- Señal auxiliar de 14 bits
+	signal QAUX : STD_LOGIC_VECTOR (30 downto 0) := "0000000000000000000000000000000";		-- Señal auxiliar de 14 bits
 
 begin
 
@@ -44,7 +44,7 @@ begin
 		begin
 			if CLK'event and CLK = '1' then											-- Condicion de cambio de flanco activo a nivel alto
 				if EN = '1' then															-- Enable a 1
-					QAUX <= QAUX (12 downto 0) & SIN;								-- Añadimos la entrada al final de la señal auxiliar
+					QAUX <= QAUX (29 downto 0) & SIN;								-- Añadimos la entrada al final de la señal auxiliar
 				end if;
 			end if;
 	end process;	

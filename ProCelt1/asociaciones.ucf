@@ -19,11 +19,11 @@ NET "AN<3>" LOC = "F12"; # Activacin del display 3 = AN3
  
 #Entrada externa donde se conecta la seal entrante 
 NET "ENTRADA" LOC = "B2"; 	#Entrada terminal 1
-NET "PUL"	  LOC = ""; 	#Entrada del pulsador
+NET "PUL"	  LOC = "G12"; #Entrada del pulsador
 
 NET "LED0" LOC = "M5";     # LED0 
 NET "LED1" LOC = "M11";   	# LED1
 NET "LED2" LOC = "P7";     # LED2
 NET "LED3" LOC = "P6";     # LED3
 NET "LED4" LOC = "N5";     # LED4
-NET "LED5" LOC = "N4";     # LED5NET "LED6" LOC = "";     	# LED6
+NET "LED5" LOC = "N4";     # LED5NET "LED6" LOC = "P4";     # LED6
