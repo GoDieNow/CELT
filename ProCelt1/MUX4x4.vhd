@@ -25,12 +25,12 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity MUX4x4 is
 	port ( 
-			E0 : in STD_LOGIC_VECTOR (3 downto 0); 	-- Entrada 0
-			E1 : in STD_LOGIC_VECTOR (3 downto 0); 	-- Entrada 1
-			E2 : in STD_LOGIC_VECTOR (3 downto 0); 	-- Entrada 2
-			E3 : in STD_LOGIC_VECTOR (3 downto 0); 	-- Entrada 3
+			E0 : in STD_LOGIC_VECTOR (4 downto 0); 	-- Entrada 0
+			E1 : in STD_LOGIC_VECTOR (4 downto 0); 	-- Entrada 1
+			E2 : in STD_LOGIC_VECTOR (4 downto 0); 	-- Entrada 2
+			E3 : in STD_LOGIC_VECTOR (4 downto 0); 	-- Entrada 3
 			S  : in STD_LOGIC_VECTOR (1 downto 0); 	-- Se√±al de control
-			Y  : out STD_LOGIC_VECTOR (3 downto 0)); 	-- Salida
+			Y  : out STD_LOGIC_VECTOR (4 downto 0)); 	-- Salida
 
 end MUX4x4;
 
@@ -38,7 +38,7 @@ architecture Behavioral of MUX4x4 is
 
 begin
 
-Y <= E0 when S="00" else  									-- Se selecciona la salida en funciÛn de las entradas
+Y <= E0 when S="00" else  									-- Se selecciona la salida en funcin de las entradas
      E1 when S="01" else  									-- de control
      E2 when S="10" else
      E3 when S="11";

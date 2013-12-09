@@ -25,10 +25,10 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity visualizacion is
 		port (
-			E0 	: in STD_LOGIC_VECTOR (3 downto 0); 		-- Entrada MUX 0 
-			E1 	: in STD_LOGIC_VECTOR (3 downto 0); 		-- Entrada MUX 1 
-			E2 	: in STD_LOGIC_VECTOR (3 downto 0); 		-- Entrada MUX 2 
-			E3 	: in STD_LOGIC_VECTOR (3 downto 0); 		-- Entrada MUX 3
+			E0 	: in STD_LOGIC_VECTOR (4 downto 0); 		-- Entrada MUX 0 
+			E1 	: in STD_LOGIC_VECTOR (4 downto 0); 		-- Entrada MUX 1 
+			E2 	: in STD_LOGIC_VECTOR (4 downto 0); 		-- Entrada MUX 2 
+			E3 	: in STD_LOGIC_VECTOR (4 downto 0); 		-- Entrada MUX 3
 			CLK 	: in STD_LOGIC; 									-- Entrada de reloj de refresco 
 			SEG7 	: out STD_LOGIC_VECTOR (0 to 6); 			-- Salida para los displays 
 			AN 	: out STD_LOGIC_VECTOR (3 downto 0)); 		-- Activacion 
@@ -41,17 +41,17 @@ architecture Behavioral of visualizacion is
 	-----------------------------
 	component MUX4x4
 		port ( 
-				E0 : in STD_LOGIC_VECTOR (3 downto 0); 		-- Entrada 0
-				E1 : in STD_LOGIC_VECTOR (3 downto 0); 		-- Entrada 1
-				E2 : in STD_LOGIC_VECTOR (3 downto 0); 		-- Entrada 2
-				E3 : in STD_LOGIC_VECTOR (3 downto 0); 		-- Entrada 3
+				E0 : in STD_LOGIC_VECTOR (4 downto 0); 		-- Entrada 0
+				E1 : in STD_LOGIC_VECTOR (4 downto 0); 		-- Entrada 1
+				E2 : in STD_LOGIC_VECTOR (4 downto 0); 		-- Entrada 2
+				E3 : in STD_LOGIC_VECTOR (4 downto 0); 		-- Entrada 3
 				S  : in STD_LOGIC_VECTOR (1 downto 0); 		-- SeÃ±al de control
-				Y  : out STD_LOGIC_VECTOR (3 downto 0)); 		-- Salida
+				Y  : out STD_LOGIC_VECTOR (4 downto 0)); 		-- Salida
 	end component;
 	
 	component decod7s
 		port (
-				D : in STD_LOGIC_VECTOR (3 downto 0); 			-- Entrada BCD
+				D : in STD_LOGIC_VECTOR (4 downto 0); 			-- Entrada BCD
 				S : out STD_LOGIC_VECTOR (0 to 6));   			-- Salida para excitar los displays
 	end component;
 	
@@ -65,10 +65,11 @@ architecture Behavioral of visualizacion is
 	----------------------
 	-- SeÃ±ales de mapeado
 	----------------------
-	signal SREF_MUX  : std_logic_vector(1 downto 0);		-- Señal Refresco-Multiplexor
-	signal SMUX_DECO : std_logic_vector(3 downto 0);		-- Señal multiplexor-Decodificador
+	signal SREF_MUX  : std_logic_vector(1 downto 0);		-- Seal Refresco-Multiplexor
+	signal SMUX_DECO : std_logic_vector(4 downto 0);		-- Seal multiplexor-Decodificador
 
 begin
+
 	--------------------------
 	-- Mapeado de Componentes
 	--------------------------

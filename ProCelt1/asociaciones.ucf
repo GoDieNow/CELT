@@ -3,14 +3,14 @@ NET "CLK" LOC = "M6"; # Seal de reloj del sistema
  
 # Conexiones de los DISPLAYS
 # Puestas al reves de como pone en la serigrafia
-NET "SEG7<0>" LOC = "M12"; # seal = CA 
-NET "SEG7<1>" LOC = "L13"; # Seal = CB 
-NET "SEG7<2>" LOC = "P12"; # Seal = CC 
+NET "SEG7<0>" LOC = "M12"; # seal = CG 
+NET "SEG7<1>" LOC = "L13"; # Seal = CF 
+NET "SEG7<2>" LOC = "P12"; # Seal = CE 
 NET "SEG7<3>" LOC = "N11"; # Seal = CD 
-NET "SEG7<4>" LOC = "N14"; # Seal = CE 
-NET "SEG7<5>" LOC = "H12"; # Seal = CF 
-NET "SEG7<6>" LOC = "L14"; # Seal = CG 
- 
+NET "SEG7<4>" LOC = "N14"; # Seal = CC 
+NET "SEG7<5>" LOC = "H12"; # Seal = CB 
+NET "SEG7<6>" LOC = "L14"; # Seal = CA 
+
 # Seales de activacin de los displays 
 NET "AN<0>" LOC = "K14"; # Activacin del display 0 = AN0 
 NET "AN<1>" LOC = "M13"; # Activacin del display 1 = AN1 
@@ -19,11 +19,3 @@ NET "AN<3>" LOC = "F12"; # Activacin del display 3 = AN3
  
 #Entrada externa donde se conecta la seal entrante 
 NET "ENTRADA" LOC = "B2"; 	#Entrada terminal 1
-NET "PUL"	  LOC = "G12"; #Entrada del pulsador
-
-NET "LED0" LOC = "M5";     # LED0 
-NET "LED1" LOC = "M11";   	# LED1
-NET "LED2" LOC = "P7";     # LED2
-NET "LED3" LOC = "P6";     # LED3
-NET "LED4" LOC = "N5";     # LED4
-NET "LED5" LOC = "N4";     # LED5NET "LED6" LOC = "P4";     # LED6
