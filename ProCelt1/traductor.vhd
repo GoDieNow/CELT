@@ -20,9 +20,10 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
-
+--use IEEE.STD_LOGIC_ARITH.ALL;
+--use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.numeric_std.ALL;
+ 
 entity traductor is
     Port ( E 	: in  STD_LOGIC_VECTOR (5 downto 0);
            ER 	: in  STD_LOGIC_VECTOR (30 downto 0);
@@ -36,8 +37,10 @@ architecture Behavioral of traductor is
 	--------------------------------
 	-- Pseudo memorias ROM internas
 	--------------------------------
-	type mem_type is array (5 downto 0) of std_logic_vector (4 downto 0);
-	constant mem1 : mem_type :=
+	type mem_type1 is array (16 downto 0) of std_logic_vector (4 downto 0);
+	type mem_type is array (41 downto 0) of std_logic_vector (4 downto 0);
+
+	constant mem1 : mem_type1 :=
 	(0=> "01011", -- b
 	1=> "01100", -- u
 	2=> "01101", -- E
@@ -66,20 +69,31 @@ architecture Behavioral of traductor is
 	6=> "10000", -- S
 	7=> "01010",  --" "
 	--8 a 11 = HH:MM
+	8=> "00000",
+	9=> "00000",
+	10=> "00000",
+	11=> "00000",
 	12=> "01010",  --" "
 	13=> "10011", -- d
 	14=> "01101", -- E
 	15=> "10101", -- L
 	16=> "01010",  --" "
 	--17 a 19 = día de la semana
+	17=> "00000",
+	18=> "00000",
+	19=> "00000",
 	20=> "01010",  --" "
 	--21 y 22 = dia del mes
+	21=> "00000",
+	22=> "00000",
 	23=> "01010",  --" "
 	24=> "10011", -- d
 	25=> "01101", -- E
 	26=> "10101", -- L
 	27=> "01010",  --" "
 	--28 y 29 = mes
+	28=> "00000",
+	29=> "00000",
 	30=> "01010",  --" "
 	31=> "10011", -- d
 	32=> "01101", -- E
@@ -125,27 +139,27 @@ begin
 				SAL <= mem1(to_integer(unsigned(E)));
 			else
 				case E is
-					when "01000" => --8
+					when "001000" => --8
 						SAL <= SH1;
-					when "01001" =>
+					when "001001" =>
 						SAL <= SH2;
-					when "01010" =>
+					when "001010" =>
 						SAL <= SM1;
-					when "01011" => --11
+					when "001011" => --11
 						SAL <= SM2;
-					when "10101" => --21
+					when "010101" => --21
 						SAL <= SD1;
-					when "10110" => --22
+					when "010110" => --22
 						SAL <= SD2;
-					when "11100" => --28
+					when "011100" => --28
 						SAL <= SMS1;
-					when "11101" => --29
+					when "011101" => --29
 						SAL <= SMS2;
-					when "10001" => --17
+					when "010001" => --17
 						SAL <= SSM1;
-					when "10010" =>
+					when "010010" =>
 						SAL <= SSM2;
-					when "10011" => --19
+					when "010011" => --19
 						SAL <= SSM3;
 					when others =>
 						SAL <= mem2(to_integer(unsigned(E)));
@@ -158,15 +172,15 @@ begin
 	begin
 		if C='1' then
 			SC   <= '1';
-			SH1  <= 0 & ER(30 DOWNTO 28);
-			SH2  <= ER(27 DOWNTO 24);
-			SM1  <= 0 & ER(23 DOWNTO 21);
-			SM2  <= ER(20 DOWNTO 17);
-			SD1  <= 0 & ER(16 DOWNTO 14);
-			SD2  <= ER(13 DOWNTO 10);
-			SMS1 <= 0 & ER(9 DOWNTO 7);
-			SMS2 <= ER(6 DOWNTO 3);
-			case ER(3 downto 0) is
+			SH1  <= "00" & ER(30 DOWNTO 28);
+			SH2  <= '0' & ER(27 DOWNTO 24);
+			SM1  <= "00" & ER(23 DOWNTO 21);
+			SM2  <= '0' & ER(20 DOWNTO 17);
+			SD1  <= "00" & ER(16 DOWNTO 14);
+			SD2  <= '0' & ER(13 DOWNTO 10);
+			SMS1 <= "00" & ER(9 DOWNTO 7);
+			SMS2 <= '0' & ER(6 DOWNTO 3);
+			case ER(2 downto 0) is
 				when "000" => --Lun
 					SSM1 <= "10101";
 					SSM2 <= "01100";
@@ -195,6 +209,7 @@ begin
 					SSM1 <= "10011";
 					SSM2 <= "10100";
 					SSM3 <= "10110";
+				when others =>
 			end case;
 		end if;
 	end process;

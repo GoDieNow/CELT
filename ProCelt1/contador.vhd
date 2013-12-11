@@ -26,7 +26,6 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity contador is
     Port ( CLK : in  STD_LOGIC;
            C 	: in  STD_LOGIC;
-           EN 	: out  STD_LOGIC;
            S 	: out  STD_LOGIC_VECTOR (5 downto 0));
 end contador;
 
@@ -49,11 +48,11 @@ begin
 				SAUX <= "000000";
 			end if;
 			
-			if SC='0' and SAUZ >= C1 then
+			if SC='0' and SAUX >= C1 then
 				SAUX <= "000000";
 			end if;
 			
-			if SC='1' and SAUZ = C2 then
+			if SC='1' and SAUX = C2 then
 				SAUX <= "000000";
 			end if;
 			

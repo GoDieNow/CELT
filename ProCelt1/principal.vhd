@@ -115,7 +115,7 @@ architecture Behavioral of principal is
 			E2 	: in STD_LOGIC_VECTOR (4 downto 0); 							-- Entrada MUX 2 
 			E3 	: in STD_LOGIC_VECTOR (4 downto 0); 							-- Entrada MUX 3 
 			CLK 	: in STD_LOGIC; 														-- Entrada de reloj de refresco 
-			SEG7 	: out STD_LOGIC_VECTOR (0 to 7); 								-- Salida para los displays 
+			SEG7 	: out STD_LOGIC_VECTOR (0 to 6); 								-- Salida para los displays 
 			AN 	: out STD_LOGIC_VECTOR (3 downto 0)); 							-- Activacion 
 	end component;
 	

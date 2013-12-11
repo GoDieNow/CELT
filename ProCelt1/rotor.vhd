@@ -49,7 +49,8 @@ architecture Behavioral of rotor is
 		port ( 
 			E	 : in  STD_LOGIC_VECTOR (5 downto 0);	-- Entrada del contador
 			ER  : in  STD_LOGIC_VECTOR (30 downto 0); -- Entrada de datos del registro
-			C 	 : in  STD_LOGIC; 
+			C 	 : in  STD_LOGIC;
+			CLK	: in  STD_LOGIC;
 			S	 : out STD_LOGIC_VECTOR (4 downto 0));
 	end component;
 	
@@ -67,10 +68,8 @@ architecture Behavioral of rotor is
 	-- Señales de mapeado
 	----------------------
 	
-	signal SCON_TRAD  : std_logic_vector(4 downto 0);
+	signal SCON_TRAD  : std_logic_vector(5 downto 0);
 	signal STRAD_REG  : std_logic_vector(4 downto 0);
-	signal SCON_REG	: std_logic;
-	
 	
 begin
 
@@ -88,6 +87,7 @@ begin
 		port map ( 
 			E 	 => SCON_TRAD,	-- Entrada del contador
 			ER  => E, 			-- Entrada de datos del registro
+			CLK => CLK,
 			C 	 => C, 
 			S	 => STRAD_REG);
 	
