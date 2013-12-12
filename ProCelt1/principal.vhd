@@ -40,7 +40,7 @@ architecture Behavioral of principal is
 		port (
 			CLK	 : in  std_logic;  													-- Reloj de la FPGA
 			CLK_M  : out std_logic;  													-- Reloj de muestreo
-			CLK_R  : out std_logic;  													-- Reloj de rotacion
+			CLK_R  : out std_logic;  													-- Reloj del subsistea de rotacion
 			CLK_V  : out std_logic); 													-- Reloj de refresco de displays 
 	end component;
 	
@@ -99,12 +99,12 @@ architecture Behavioral of principal is
 	
 	component rotor
 		port ( 
-			E 		: in  STD_LOGIC_VECTOR (30 downto 0); 						-- Entrada
-			C  	: in  STD_LOGIC; 													-- Señal de conmutación saludo/hora
-			S0 	: out STD_LOGIC_VECTOR (4 downto 0); 						-- Salida MUX 0 
-			S1 	: out STD_LOGIC_VECTOR (4 downto 0); 						-- Salida MUX 1 
-			S2 	: out STD_LOGIC_VECTOR (4 downto 0); 						-- Salida MUX 2 
-			S3 	: out STD_LOGIC_VECTOR (4 downto 0); 						-- Salida MUX 3
+			E 		: in  STD_LOGIC_VECTOR (30 downto 0); 							-- Entrada desde el registro
+			C  	: in  STD_LOGIC; 														-- Señal de conmutación saludo/hora
+			S0 	: out STD_LOGIC_VECTOR (4 downto 0); 							-- Salida hacia E0 del MUX de visualiza 
+			S1 	: out STD_LOGIC_VECTOR (4 downto 0); 							-- Salida hacia E1 del MUX de visualiza 
+			S2 	: out STD_LOGIC_VECTOR (4 downto 0); 							-- Salida hacia E2 del MUX de visualiza 
+			S3 	: out STD_LOGIC_VECTOR (4 downto 0); 							-- Salida hacia E3 del MUX de visualiza
 			CLK 	: in  STD_LOGIC); 													-- Reloj 
 	end component;
 	

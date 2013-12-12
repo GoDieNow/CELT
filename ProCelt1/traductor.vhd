@@ -23,13 +23,19 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use IEEE.STD_LOGIC_ARITH.ALL;
 --use IEEE.STD_LOGIC_UNSIGNED.ALL;
 use IEEE.numeric_std.ALL;
- 
+------------------------------------------------------------------------------------------------------------------------
+-- Éste módulo se encarga de traducir el valor del contador en un valor concreto, según la secuencia guardada en
+-- los arrays internos, de forma que el valor a su salida es posteriormente decodificado por el módulo de visualizacion
+-- El módulo admite la entrada de una señal de control que permite conmutar entre dos posibles mensajes, así como la 
+-- integración en el mensaje de los valores que llegan desde el resgitro.
+------------------------------------------------------------------------------------------------------------------------
+
 entity traductor is
-    Port ( E 	: in  STD_LOGIC_VECTOR (5 downto 0);
-           ER 	: in  STD_LOGIC_VECTOR (30 downto 0);
-           C 	: in  STD_LOGIC;
-			  CLK	: in  STD_LOGIC;
-           S 	: out  STD_LOGIC_VECTOR (4 downto 0));
+    Port ( E 	: in  STD_LOGIC_VECTOR (5 downto 0); 									-- Entrada desde el contador
+           ER 	: in  STD_LOGIC_VECTOR (30 downto 0); 									-- Entrada de datos del registro
+           C 	: in  STD_LOGIC; 																-- Señal VALIDAR del autómata, sirve de conmutador entre saludo/mensaje de hora
+			  CLK	: in  STD_LOGIC; 																-- Señal del reloj
+           S 	: out  STD_LOGIC_VECTOR (4 downto 0)); 								-- Salida del módulo hacia el siguiente
 end traductor;
 
 architecture Behavioral of traductor is
@@ -37,10 +43,10 @@ architecture Behavioral of traductor is
 	--------------------------------
 	-- Pseudo memorias ROM internas
 	--------------------------------
-	type mem_type1 is array (16 downto 0) of std_logic_vector (4 downto 0);
-	type mem_type is array (41 downto 0) of std_logic_vector (4 downto 0);
-
-	constant mem1 : mem_type1 :=
+	type mem_type1 is array (16 downto 0) of std_logic_vector (4 downto 0); 	-- En lugar de usar un "case" con cerca de 70 posibilidades
+	type mem_type is array (41 downto 0) of std_logic_vector (4 downto 0);		-- Se ha optado por dos arrays pensados como dos memorias ROM internas
+	
+	constant mem1 : mem_type1 :=																-- Memoria para el saludo inciial, con sus correspondencias en letras
 	(0=> "01011", -- b
 	1=> "01100", -- u
 	2=> "01101", -- E
@@ -59,7 +65,7 @@ architecture Behavioral of traductor is
 	15=> "01010", --" "
 	16=> "01010"); --" "
 	
-	constant mem2 : mem_type :=
+	constant mem2 : mem_type :=																-- Memoria para el mensaje, con sus correspondencias en letras
 	(0=> "10000", -- S
 	1=> "10100", -- o
 	2=> "01110", -- n
@@ -134,12 +140,12 @@ begin
 
 	process (CLK)
 	begin
-		if (CLK'event and CLK = '1') then
-			if SC = '0' then
+		if (CLK'event and CLK = '1') then							-- Con flanco positivo de reloj
+			if SC = '0' then												-- Si no se activa C, se muestra el saludo inicial
 				SAL <= mem1(to_integer(unsigned(E)));
 			else
-				case E is
-					when "001000" => --8
+				case E is													-- Si se ha activado C, dependiendo del valor obtendremos o bien una posición de los arrays 
+					when "001000" => --8									-- o bien un valor guardado en los registros internos...
 						SAL <= SH1;
 					when "001001" =>
 						SAL <= SH2;
@@ -170,7 +176,7 @@ begin
 
 	process (C, ER)
 	begin
-		if C='1' then
+		if C='1' then										-- Si C cambia, lo guardamos y copiamos los valores para nuestros registros
 			SC   <= '1';
 			SH1  <= "00" & ER(30 DOWNTO 28);
 			SH2  <= '0' & ER(27 DOWNTO 24);
@@ -180,8 +186,8 @@ begin
 			SD2  <= '0' & ER(13 DOWNTO 10);
 			SMS1 <= "00" & ER(9 DOWNTO 7);
 			SMS2 <= '0' & ER(6 DOWNTO 3);
-			case ER(2 downto 0) is
-				when "000" => --Lun
+			case ER(2 downto 0) is						-- Como el día de la semana viene codificado con 3bits, lo decodificamos 
+				when "000" => --Lun                 -- y re-codificamos según nuestro criterio: Se guardan las 3 primeras letras del día
 					SSM1 <= "10101";
 					SSM2 <= "01100";
 					SSM3 <= "01110";
@@ -217,7 +223,7 @@ begin
 	-----------
 	-- Salidas
 	-----------
-	S <= SAL;
+	S <= SAL;												-- Se mantiene una salida constante hacia el siguiente módulo
 
 end Behavioral;
 

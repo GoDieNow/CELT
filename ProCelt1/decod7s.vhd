@@ -45,8 +45,8 @@ begin
 		"0001111" when "00111", -- #7
 		"0000000" when "01000", -- #8
 		"0001100" when "01001", -- #9
-		"1111111" when "01010", -- " "
-		"1100000" when "01011", -- b
+		"1111111" when "01010", -- " "			-- De aquí hacia abajo se añaden los 
+		"1100000" when "01011", -- b				-- nuevos códigos para el saludo/mensaje
 		"1100011" when "01100", -- u
 		"0110000" when "01101", -- E
 		"1101010" when "01110", -- n

@@ -22,18 +22,21 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
+---------------------------------------------------------------------------------------------------------------------
+-- Éste módulo hace las funciones de un registro de desplazamiento con entradas/salidas de 5bits
+---------------------------------------------------------------------------------------------------------------------
 
 entity reg_desp5 is
-    Port ( E 	: in  STD_LOGIC_VECTOR (4 downto 0);
-           CLK : in  STD_LOGIC;
-           S0 	: out  STD_LOGIC_VECTOR (4 downto 0);
-           S1 	: out  STD_LOGIC_VECTOR (4 downto 0);
-           S2 	: out  STD_LOGIC_VECTOR (4 downto 0);
-           S3 	: out  STD_LOGIC_VECTOR (4 downto 0));
+    Port ( E 	: in  STD_LOGIC_VECTOR (4 downto 0);				-- Entrada desde el traductor
+           CLK : in  STD_LOGIC;											-- Señal del reloj
+           S0 	: out STD_LOGIC_VECTOR (4 downto 0);				-- Salida hacia el MUX de Visualiza: E0
+			  S1  : out STD_LOGIC_VECTOR (4 downto 0);				-- Salida hacia el MUX de Visualiza: E1
+			  S2  : out STD_LOGIC_VECTOR (4 downto 0);				-- Salida hacia el MUX de Visualiza: E2
+			  S3  : out STD_LOGIC_VECTOR (4 downto 0));				-- Salida hacia el MUX de Visualiza: E3
 end reg_desp5;
 
 architecture Behavioral of reg_desp5 is
-	signal S0AUX	: std_logic_vector(4 downto 0) := "00000" ;
+	signal S0AUX	: std_logic_vector(4 downto 0) := "00000" ;	-- Registros internos para mantener constantes las salidas
 	signal S1AUX	: std_logic_vector(4 downto 0) := "00000" ;
 	signal S2AUX	: std_logic_vector(4 downto 0) := "00000" ;
 	signal S3AUX	: std_logic_vector(4 downto 0) := "00000" ;
@@ -42,19 +45,18 @@ begin
 	
 	process (CLK)
 	begin
-		if (CLK'event and CLK = '1') then
-			S0AUX <= S1AUX;
+		if (CLK'event and CLK = '1') then								-- Flanco positivo de reloj
+			S0AUX <= S1AUX;													-- Desplazamos las salidas de derecha a izquierda
 			S1AUX <= S2AUX;
 			S2AUX <= S3AUX;
-			S3AUX <= E;
+			S3AUX <= E;															-- Añadiendo la nueva entrada a la derecha del todo.
 		end if;
 	end process;
 	
 	-----------
 	-- Salidas
 	-----------
-	
-	S0 <= S0AUX;
+	S0 <= S0AUX;																-- Pasamos las salidas al siguiente módulo
 	S1 <= S1AUX;
 	S2 <= S2AUX;
 	S3 <= S3AUX;

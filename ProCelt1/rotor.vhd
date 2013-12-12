@@ -23,14 +23,22 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
+---------------------------------------------------------------------------------------------------------------------
+-- Este subsistema está compuesto por tres componentes: un contador, un registro de desplazamiento y un "traductor"
+-- que convierte el valor de la cuenta del contador en ese momento es un valor adecuado a guardar en el resgistro
+-- de desplazamiento.
+-- El funcionamiento, simplificando, consiste en tomar el valor de la cuenta para ir generando un mensaje que se 
+-- va desplazando por los displays de 7 segmentos ofreciendo un saludo inicial y posteriormente un mensaje con la
+-- hora en el formato "Son las HH:MM del DDS DD del MM de 2013"
+---------------------------------------------------------------------------------------------------------------------
 entity rotor is
-    Port ( CLK : in  STD_LOGIC;
-           E 	: in  STD_LOGIC_VECTOR (30 downto 0);
-           C 	: in  STD_LOGIC;
-           S0 	: out STD_LOGIC_VECTOR (4 downto 0);
-           S1 	: out STD_LOGIC_VECTOR (4 downto 0);
-           S2 	: out STD_LOGIC_VECTOR (4 downto 0);
-           S3 	: out STD_LOGIC_VECTOR (4 downto 0));
+    Port ( CLK : in  STD_LOGIC;									-- Señal del reloj
+           E 	: in  STD_LOGIC_VECTOR (30 downto 0);		-- Entrada con los datos del registro
+           C 	: in  STD_LOGIC;									-- Señal VALIDAR del autómata, sirve de conmutador entre saludo/mensaje de hora
+           S0 	: out STD_LOGIC_VECTOR (4 downto 0);		-- Salida hacia el MUX de Visualiza: E0
+           S1 	: out STD_LOGIC_VECTOR (4 downto 0);		-- Salida hacia el MUX de Visualiza: E1
+           S2 	: out STD_LOGIC_VECTOR (4 downto 0);		-- Salida hacia el MUX de Visualiza: E2
+           S3 	: out STD_LOGIC_VECTOR (4 downto 0));		-- Salida hacia el MUX de Visualiza: E3
 end rotor;
 
 architecture Behavioral of rotor is
@@ -40,36 +48,37 @@ architecture Behavioral of rotor is
 	-----------------------------
 	component contador
 		port (
-			CLK : in  STD_LOGIC;
-			C 	 : in  STD_LOGIC;
-			S	 : out STD_LOGIC_VECTOR (5 downto 0));
+			CLK : in  STD_LOGIC;										-- Señal del reloj
+			C 	 : in  STD_LOGIC;										-- Señal VALIDAR del autómata, sirve de conmutador entre saludo/mensaje de hora
+			S	 : out STD_LOGIC_VECTOR (5 downto 0));			-- Salida del módulo hacia el siguiente
 	end component;
 	
 	component traductor
 		port ( 
-			E	 : in  STD_LOGIC_VECTOR (5 downto 0);	-- Entrada del contador
-			ER  : in  STD_LOGIC_VECTOR (30 downto 0); -- Entrada de datos del registro
-			C 	 : in  STD_LOGIC;
-			CLK	: in  STD_LOGIC;
-			S	 : out STD_LOGIC_VECTOR (4 downto 0));
+			E	 : in  STD_LOGIC_VECTOR (5 downto 0);			-- Entrada desde el contador
+			ER  : in  STD_LOGIC_VECTOR (30 downto 0); 		-- Entrada de datos del registro
+			C 	 : in  STD_LOGIC;										-- Señal VALIDAR del autómata, sirve de conmutador entre saludo/mensaje de hora
+			CLK : in  STD_LOGIC;										-- Señal del reloj
+			S	 : out STD_LOGIC_VECTOR (4 downto 0));			-- Salida del módulo hacia el siguiente
 	end component;
 	
 	component reg_desp5
 		port (
-			E 	 : in  STD_LOGIC_VECTOR (4 downto 0);
-			CLK :	in  STD_LOGIC;
-			S0	 : out STD_LOGIC_VECTOR (4 downto 0);
-			S1	 : out STD_LOGIC_VECTOR (4 downto 0);
-			S2	 : out STD_LOGIC_VECTOR (4 downto 0);
-			S3	 : out STD_LOGIC_VECTOR (4 downto 0));
+			E 	 : in  STD_LOGIC_VECTOR (4 downto 0);			-- Entrada desde el traductor
+			CLK :	in  STD_LOGIC;										-- Señal del reloj
+			S0  : out STD_LOGIC_VECTOR (4 downto 0);			-- Salida hacia el MUX de Visualiza: E0
+         S1  : out STD_LOGIC_VECTOR (4 downto 0);			-- Salida hacia el MUX de Visualiza: E1
+         S2  : out STD_LOGIC_VECTOR (4 downto 0);			-- Salida hacia el MUX de Visualiza: E2
+         S3  : out STD_LOGIC_VECTOR (4 downto 0));			-- Salida hacia el MUX de Visualiza: E3
+
 	end component;
 	
 	----------------------
 	-- Señales de mapeado
 	----------------------
 	
-	signal SCON_TRAD  : std_logic_vector(5 downto 0);
-	signal STRAD_REG  : std_logic_vector(4 downto 0);
+	signal SCON_TRAD  : std_logic_vector(5 downto 0);		-- Señal de unión Contador-Traductor
+	signal STRAD_REG  : std_logic_vector(4 downto 0);		-- Señal de unión Traductor-Reg_Desplazamiento
 	
 begin
 
@@ -85,8 +94,8 @@ begin
 	
 	TRANS: traductor
 		port map ( 
-			E 	 => SCON_TRAD,	-- Entrada del contador
-			ER  => E, 			-- Entrada de datos del registro
+			E 	 => SCON_TRAD,
+			ER  => E,
 			CLK => CLK,
 			C 	 => C, 
 			S	 => STRAD_REG);
