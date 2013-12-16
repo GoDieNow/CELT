@@ -43,132 +43,151 @@ architecture Behavioral of traductor is
 	--------------------------------
 	-- Pseudo memorias ROM internas
 	--------------------------------
-	type mem_type1 is array (16 downto 0) of std_logic_vector (4 downto 0); 	-- En lugar de usar un "case" con cerca de 70 posibilidades
-	type mem_type is array (41 downto 0) of std_logic_vector (4 downto 0);		-- Se ha optado por dos arrays pensados como dos memorias ROM internas
-	
-	constant mem1 : mem_type1 :=																-- Memoria para el saludo inciial, con sus correspondencias en letras
-	(0=> "01011", -- b
-	1=> "01100", -- u
-	2=> "01101", -- E
-	3=> "01110", -- n
-	4=> "01111", -- A
-	5=> "10000", -- S
-	6=> "01010", --" "
-	7=> "10001", -- t
-	8=> "01111", -- A
-	9=> "10010", -- r
-	10=> "10011", -- d
-	11=> "01101", -- E
-	12=> "10000", -- S
-	13=> "01010", --" "
-	14=> "01010", --" "
-	15=> "01010", --" "
-	16=> "01010"); --" "
-	
-	constant mem2 : mem_type :=																-- Memoria para el mensaje, con sus correspondencias en letras
-	(0=> "10000", -- S
-	1=> "10100", -- o
-	2=> "01110", -- n
-	3=> "01010",  --" "
-	4=> "10101", -- L
-	5=> "01111", -- A
-	6=> "10000", -- S
-	7=> "01010",  --" "
+		--Mensaje de "Buenas tardes"
+	constant m0	: std_logic_vector(4 downto 0) := "01011"; -- b
+	constant m1	: std_logic_vector(4 downto 0) := "01100"; -- u
+	constant m2	: std_logic_vector(4 downto 0) := "01101"; -- E
+	constant m3	: std_logic_vector(4 downto 0) := "01110"; -- n
+	constant m4	: std_logic_vector(4 downto 0) := "01111"; -- A
+	constant m5	: std_logic_vector(4 downto 0) := "10000"; -- S
+	constant m6	: std_logic_vector(4 downto 0) := "01010"; --" "
+	constant m7	: std_logic_vector(4 downto 0) := "10001"; -- t
+	constant m8	: std_logic_vector(4 downto 0) := "01111"; -- A
+	constant m9	: std_logic_vector(4 downto 0) := "10010"; -- r
+	constant m10	: std_logic_vector(4 downto 0) := "10011"; -- d
+	constant m11	: std_logic_vector(4 downto 0) := "01101"; -- E
+	constant m12	: std_logic_vector(4 downto 0) := "10000"; -- S
+	constant m13	: std_logic_vector(4 downto 0) := "01010"; --" "
+	constant m14	: std_logic_vector(4 downto 0) := "01010"; --" "
+	constant m15	: std_logic_vector(4 downto 0) := "01010"; --" "
+	constant m16	: std_logic_vector(4 downto 0) := "01010"; --" "
+
+		--Mensaje de "Son las XX..."
+	constant t0	: std_logic_vector(4 downto 0) := "10000"; -- S
+	constant t1	: std_logic_vector(4 downto 0) := "10100"; -- o
+	constant t2	: std_logic_vector(4 downto 0) := "01110"; -- n
+	constant t3	: std_logic_vector(4 downto 0) := "01010"; --" "
+	constant t4	: std_logic_vector(4 downto 0) := "10101"; -- L
+	constant t5	: std_logic_vector(4 downto 0) := "01111"; -- A
+	constant t6	: std_logic_vector(4 downto 0) := "10000"; -- S
+	constant t7	: std_logic_vector(4 downto 0) := "01010"; --" "
 	--8 a 11 = HH:MM
-	8=> "00000",
-	9=> "00000",
-	10=> "00000",
-	11=> "00000",
-	12=> "01010",  --" "
-	13=> "10011", -- d
-	14=> "01101", -- E
-	15=> "10101", -- L
-	16=> "01010",  --" "
+	signal SH1	: std_logic_vector(4 downto 0) := "00000"; -- Digito 1 Hora
+	signal SH2	: std_logic_vector(4 downto 0) := "00000"; -- Digito 2 Hora
+	signal SM1	: std_logic_vector(4 downto 0) := "00000"; -- Digito 1 Minutos
+	signal SM2	: std_logic_vector(4 downto 0) := "00000"; -- Digito 2 Minutos
+	constant t12	: std_logic_vector(4 downto 0) := "01010"; --" "
+	constant t13	: std_logic_vector(4 downto 0) := "10011"; -- d
+	constant t14	: std_logic_vector(4 downto 0) := "01101"; -- E
+	constant t15	: std_logic_vector(4 downto 0) := "10101"; -- L
+	constant t16	: std_logic_vector(4 downto 0) := "01010"; --" "
 	--17 a 19 = día de la semana
-	17=> "00000",
-	18=> "00000",
-	19=> "00000",
-	20=> "01010",  --" "
+	signal SSM1	: std_logic_vector(4 downto 0) := "00000"; -- Digito 1 Dia semana
+	signal SSM2	: std_logic_vector(4 downto 0) := "00000"; -- Digito 2 Dia semana
+	signal SSM3	: std_logic_vector(4 downto 0) := "00000"; -- Digito 3 Dia semana
+	constant t20	: std_logic_vector(4 downto 0) := "01010"; --" "
 	--21 y 22 = dia del mes
-	21=> "00000",
-	22=> "00000",
-	23=> "01010",  --" "
-	24=> "10011", -- d
-	25=> "01101", -- E
-	26=> "10101", -- L
-	27=> "01010",  --" "
+	constant SD1	: std_logic_vector(4 downto 0) := "00000"; -- Digito 1 Dia
+	constant SD2	: std_logic_vector(4 downto 0) := "00000"; -- Digito 2 Dia
+	constant t23	: std_logic_vector(4 downto 0) := "01010"; --" "
+	constant t24	: std_logic_vector(4 downto 0) := "10011"; -- d
+	constant t25	: std_logic_vector(4 downto 0) := "01101"; -- E
+	constant t26	: std_logic_vector(4 downto 0) := "10101"; -- L
+	constant t27	: std_logic_vector(4 downto 0) := "01010"; --" "
 	--28 y 29 = mes
-	28=> "00000",
-	29=> "00000",
-	30=> "01010",  --" "
-	31=> "10011", -- d
-	32=> "01101", -- E
-	33=> "01010",  --" "
-	34=> "00010", -- #2
-	35=> "00000", -- #0
-	36=> "00001", -- #1
-	37=> "00011", -- #3
-	38=> "01010",  --" "
-	39=> "01010",  --" "
-	40=> "01010",  --" "
-	41=> "01010");  --" "
+	signal SMS1	: std_logic_vector(4 downto 0) := "00000"; -- Digito 1 Mes
+	signal SMS2	: std_logic_vector(4 downto 0) := "00000"; -- Digito 2 Mes
+	constant t30	: std_logic_vector(4 downto 0) := "01010"; --" "
+	constant t31	: std_logic_vector(4 downto 0) := "10011"; -- d
+	constant t32	: std_logic_vector(4 downto 0) := "01101"; -- E
+	constant t33	: std_logic_vector(4 downto 0) := "01010"; --" "
+	constant t34	: std_logic_vector(4 downto 0) := "00010"; -- #2
+	constant t35	: std_logic_vector(4 downto 0) := "00000"; -- #0
+	constant t36	: std_logic_vector(4 downto 0) := "00001"; -- #1
+	constant t37	: std_logic_vector(4 downto 0) := "00011"; -- #3
+	constant t38	: std_logic_vector(4 downto 0) := "01010"; --" "
+	constant t39	: std_logic_vector(4 downto 0) := "01010"; --" "
+	constant t40	: std_logic_vector(4 downto 0) := "01010"; --" "
+	constant t41	: std_logic_vector(4 downto 0) := "01010"; --" "
 	
 	------------------------------
 	-- Señales/Registros internos
 	------------------------------
-	signal SH1	: std_logic_vector(4 downto 0) := "00000" ; -- Digito 1 Hora
-	signal SH2	: std_logic_vector(4 downto 0) := "00000" ; -- Digito 2 Hora
-
-	signal SM1	: std_logic_vector(4 downto 0) := "00000" ; -- Digito 1 Minutos
-	signal SM2	: std_logic_vector(4 downto 0) := "00000" ; -- Digito 2 Minutos
-
-	signal SD1	: std_logic_vector(4 downto 0) := "00000" ; -- Digito 1 Dia
-	signal SD2	: std_logic_vector(4 downto 0) := "00000" ; -- Digito 2 Dia
-
-	signal SMS1	: std_logic_vector(4 downto 0) := "00000" ; -- Digito 1 Mes
-	signal SMS2	: std_logic_vector(4 downto 0) := "00000" ; -- Digito 2 Mes
-
-	signal SSM1	: std_logic_vector(4 downto 0) := "00000" ; -- Digito 1 Dia semana
-	signal SSM2	: std_logic_vector(4 downto 0) := "00000" ; -- Digito 2 Dia semana
-	signal SSM3	: std_logic_vector(4 downto 0) := "00000" ; -- Digito 3 Dia semana
-
+	signal SAL : std_logic_vector(4 downto 0) := "01010" ;  --Salida constante en blanco " " como inicial
 	signal SC : std_logic := '0'; -- Control para saber si se está en mensaje de buenas tardes
 											-- o en el de "Son las ..."
-	signal SAL : std_logic_vector(4 downto 0) := "00000" ;  --Salida constante
-
 begin
 
 	process (CLK)
 	begin
-		if (CLK'event and CLK = '1') then							-- Con flanco positivo de reloj
-			if SC = '0' then												-- Si no se activa C, se muestra el saludo inicial
-				SAL <= mem1(to_integer(unsigned(E)));
+		if (CLK'event and CLK = '1') then	-- Con flanco positivo de reloj
+			if SC = '0' then						-- Si no se activa C, se muestra el saludo inicial
+				case E is
+					when "000000" => SAL <= m0;
+					when "000001" => SAL <= m1;
+					when "000010" => SAL <= m2;
+					when "000011" => SAL <= m3;
+					when "000100" => SAL <= m4;
+					when "000101" => SAL <= m5;
+					when "000110" => SAL <= m6;
+					when "000111" => SAL <= m7;
+					when "001000" => SAL <= m8;
+					when "001001" => SAL <= m9;
+					when "001010" => SAL <= m10;
+					when "001011" => SAL <= m11;
+					when "001100" => SAL <= m12;
+					when "001101" => SAL <= m13;
+					when "001110" => SAL <= m14;
+					when "001111" => SAL <= m15;
+					when "010000" => SAL <= m16;
+					when others => SAL <= "01010"; --" "
+				end case;
 			else
-				case E is													-- Si se ha activado C, dependiendo del valor obtendremos o bien una posición de los arrays 
-					when "001000" => --8									-- o bien un valor guardado en los registros internos...
-						SAL <= SH1;
-					when "001001" =>
-						SAL <= SH2;
-					when "001010" =>
-						SAL <= SM1;
-					when "001011" => --11
-						SAL <= SM2;
-					when "010101" => --21
-						SAL <= SD1;
-					when "010110" => --22
-						SAL <= SD2;
-					when "011100" => --28
-						SAL <= SMS1;
-					when "011101" => --29
-						SAL <= SMS2;
-					when "010001" => --17
-						SAL <= SSM1;
-					when "010010" =>
-						SAL <= SSM2;
-					when "010011" => --19
-						SAL <= SSM3;
-					when others =>
-						SAL <= mem2(to_integer(unsigned(E)));
+				case E is							 -- Si se ha activado C, se muestra el mensaje de hora 
+					when "000000" => SAL <= t0;
+					when "000001" => SAL <= t1;
+					when "000010" => SAL <= t2;
+					when "000011" => SAL <= t3;
+					when "000100" => SAL <= t4;
+					when "000101" => SAL <= t5;
+					when "000110" => SAL <= t6;
+					when "000111" => SAL <= t7;
+					when "001000" => SAL <= SH1; --8
+					when "001001" => SAL <= SH2;
+					when "001010" => SAL <= SM1;
+					when "001011" => SAL <= SM2; --11
+					when "001100" => SAL <= t12;
+					when "001101" => SAL <= t13;
+					when "001110" => SAL <= t14;
+					when "001111" => SAL <= t15;
+					when "010000" => SAL <= t16;
+					when "010001" => SAL <= SSM1; --17
+					when "010010" => SAL <= SSM2;
+					when "010011" => SAL <= SSM3; --19
+					when "010100" => SAL <= t20;
+					when "010101" => SAL <= SD1; --21
+					when "010110" => SAL <= SD2; --22
+					when "010111" => SAL <= t23;
+					when "011000" => SAL <= t24;
+					when "011001" => SAL <= t25;
+					when "011010" => SAL <= t26;
+					when "011011" => SAL <= t27;
+					when "011100" => SAL <= SMS1; --28
+					when "011101" => SAL <= SMS2; --29
+					when "011110" => SAL <= t30;
+					when "011111" => SAL <= t31;
+					when "100000" => SAL <= t32;
+					when "100001" => SAL <= t33;
+					when "100010" => SAL <= t34;
+					when "100011" => SAL <= t35;
+					when "100100" => SAL <= t36;
+					when "100101" => SAL <= t37;
+					when "100110" => SAL <= t38;
+					when "100111" => SAL <= t39;
+					when "101000" => SAL <= t40;
+					when "101001" => SAL <= t41;
+					when "101010" => SAL <= t42;
+					when others => SAL <= "01010"; --" "
 				end case;
 			end if;
 		end if;
