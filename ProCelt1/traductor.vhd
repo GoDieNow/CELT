@@ -33,7 +33,8 @@ use IEEE.numeric_std.ALL;
 entity traductor is
     Port ( E 	: in  STD_LOGIC_VECTOR (5 downto 0); 									-- Entrada desde el contador
            ER 	: in  STD_LOGIC_VECTOR (30 downto 0); 									-- Entrada de datos del registro
-           C 	: in  STD_LOGIC; 																-- Señal VALIDAR del autómata, sirve de conmutador entre saludo/mensaje de hora
+           C 	: in  STD_LOGIC; 																-- Señal VALIDAR del autómata, sirve de conmutador entre saludo
+																										--	/mensaje de hora
 			  CLK	: in  STD_LOGIC; 																-- Señal del reloj
            S 	: out  STD_LOGIC_VECTOR (4 downto 0)); 								-- Salida del módulo hacia el siguiente
 end traductor;
